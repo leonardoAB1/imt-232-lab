@@ -24,28 +24,25 @@
 
 int main()
 {
-  // enable GPIO clocks and AFIO
+  // enable GPIO and TIM2 clocks and AFIO
   RCC->APB2ENR |= (RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPBEN | RCC_APB2ENR_AFIOEN);
-  // enable TIM2 clock
   RCC->APB1ENR |= (1 << 0);
+
   // configure GPIOs
-  // PA4 PA5 PA6 as inputs. Equivalent GPIOA->CRL = 0x08880000;
+  // PA4, PA5, and PA6 as inputs with pull-up resistors
   GPIOA->CRL &= ~(GPIO_CRL_CNF4 | GPIO_CRL_CNF5 | GPIO_CRL_CNF6);
   GPIOA->CRL |= (GPIO_CRL_MODE4_0 | GPIO_CRL_MODE5_0 | GPIO_CRL_MODE6_0);
+  GPIOA->ODR |= (1 << 4) | (1 << 5) | (1 << 6);
+
   // PA8 as alternate function output open-drain
   GPIOA->CRH = 0x000D;
   // PB13 PB14 PB15 as RGB outputs
   GPIOB->CRH = 0x11100000;
-  // inputs as pull up
-  GPIOA->ODR = (1 << 8);
-  GPIOB->ODR = 0xE000; //(1<<13)|(1<<14)|(1<<15)
 
-  // configure interrupts
-  // enable AFIO
-  // selecy interrupt input pin AFIO_EXTICR
-  AFIO->EXTICR[0] = (AFIO->EXTICR[0] & 0xFFFFFFF0) | (0x1); // PA4
-  AFIO->EXTICR[1] = (AFIO->EXTICR[1] & 0xFFFFFFF0) | (0x2); // PA5
-  AFIO->EXTICR[2] = (AFIO->EXTICR[2] & 0xFFFFFFF0) | (0x3); // PA6
+  // Select PA4, PA5, and PA6 as interrupt inputs
+  AFIO->EXTICR[0] |= (0x1);
+  AFIO->EXTICR[1] |= (0x2);
+  AFIO->EXTICR[2] |= (0x3);
 
   // choose edge RTSR FTSR
   // Set the interrupt trigger to rising edge
@@ -59,7 +56,6 @@ int main()
   NVIC_EnableIRQ(EXTI4_IRQHandler);
   NVIC_EnableIRQ(EXTI5_IRQHandler);
   NVIC_EnableIRQ(EXTI6_IRQHandler);
-  // clear PR flag in interrupt routine
 
   // configure pwm
   // duty cycle = (TIMx_CCRn*100)/(TIMx_ARR+1)
@@ -84,6 +80,10 @@ int main()
 
   TIM2->EGR = 1;     // UG=1
   TIM2->CR1 |= 0x01; // timer enable (CEN=1)
+
+  // infinite loop to wait for interrupts
+  while (1) {
+  }
 }
 
 void EXTI4_IRQHandler(void)
