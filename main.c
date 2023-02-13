@@ -24,6 +24,8 @@
 
 int main()
 {
+  __disable_irq(); //disable interrupt globally
+
   // enable GPIO and TIM2 clocks and AFIO
   RCC->APB2ENR |= (RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPBEN | RCC_APB2ENR_AFIOEN);
   RCC->APB1ENR |= (1 << 0);
@@ -40,9 +42,7 @@ int main()
   GPIOB->CRH = 0x11100000;
 
   // Select PA4, PA5, and PA6 as interrupt inputs
-  AFIO->EXTICR[0] |= (0x1);
-  AFIO->EXTICR[1] |= (0x2);
-  AFIO->EXTICR[2] |= (0x3);
+  AFIO->EXTICR[1] |= (1<<0)|(1<<4)|(1<<8);
 
   // choose edge RTSR FTSR
   // Set the interrupt trigger to rising edge
@@ -52,10 +52,8 @@ int main()
   // Enable the interrupt for PA4, PA5, and PA6
   EXTI->IMR |= EXTI_IMR_MR4 | EXTI_IMR_MR5 | EXTI_IMR_MR6;
 
-  // enable EXTI interupt ISER on the NVIC_EnableIRQ function
-  NVIC_EnableIRQ(EXTI4_IRQHandler);
-  NVIC_EnableIRQ(EXTI5_IRQHandler);
-  NVIC_EnableIRQ(EXTI6_IRQHandler);
+  // enable EXTI interrupt ISER on the NVIC_EnableIRQ function
+  NVIC_EnableIRQ(EXTI1_IRQn); //enable EXTI1 interrupt
 
   // configure pwm
   // duty cycle = (TIMx_CCRn*100)/(TIMx_ARR+1)
@@ -82,6 +80,7 @@ int main()
   TIM2->CR1 |= 0x01; // timer enable (CEN=1)
 
   // infinite loop to wait for interrupts
+  __enable_irq(); //enable interrupt globally
   while (1) {
   }
 }
