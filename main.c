@@ -88,6 +88,33 @@ int main()
   // infinite loop to wait for interrupts
   __enable_irq(); //enable interrupt globally
   while (1) {
+    if (((GPIOA->IDR & (1<<4))!=0)      // PA4 high
+        && (!(GPIOA->IDR & (1<<5))!=0)  // PA5 low
+        && (!(GPIOA->IDR & (1<<6))!=0)) // PA6 low
+    {
+    // set red
+    // make PB13 low, PB14 low, PB15 high
+    GPIOB->BSRR = (1 << 29) | (1 << 30) | (1 << 15);
+    TIM2->CCR1 = 0; // duty cycle 0%
+    }
+    else if (!((GPIOA->IDR & (1<<4))!=0)    // PA4 low
+            && ((GPIOA->IDR & (1<<5))!=0)   // PA5 high
+            && !((GPIOA->IDR & (1<<6))!=0)) // PA6 low
+    {
+    // set green
+    // make PB13 low, PB14 high, PB15 low
+    GPIOB->BSRR = (1 << 29) | (1 << 14) | (1 << 31);
+    TIM2->CCR1 = 500; // duty cycle 50%
+    }
+    else if (!((GPIOA->IDR & (1<<4))!=0)   // PA4 low
+            && !((GPIOA->IDR & (1<<5))!=0) // PA5 low
+            && ((GPIOA->IDR & (1<<6))!=0)) // PA6 high
+    {
+    // set blue
+    // make PB13 high, PB14 low, PB15 low
+    GPIOB->BSRR = (1 << 13) | (1 << 30) | (1 << 31);
+    TIM2->CCR1 = 1000; // duty cycle 100%%
+    }
   }
 }
 
