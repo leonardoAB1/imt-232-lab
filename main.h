@@ -22,12 +22,12 @@
 
 #ifndef __MAIN_H
 #define __MAIN_H
+#define STM32F10X_LD
 
 #include "stm32f10x.h"
 
-void EXTI4_IRQHandler(void);
-void EXTI5_IRQHandler(void);
-void EXTI6_IRQHandler(void);
+void EXTI4_IRQHandler(void) __attribute__((interrupt));
+void EXTI9_5_IRQHandler(void) __attribute__((interrupt));
 
 #endif
 

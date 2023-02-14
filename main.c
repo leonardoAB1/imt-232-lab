@@ -24,7 +24,8 @@
 
 int main()
 {
-  __disable_irq(); //disable interrupt globally
+	//disable interrupt globally
+  __disable_irq(); 
 
   // enable GPIO and TIM2 clocks and AFIO
   RCC->APB2ENR |= (RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPBEN | RCC_APB2ENR_AFIOEN);
@@ -33,7 +34,7 @@ int main()
   // configure GPIOs
   // PA4, PA5, and PA6 as inputs with pull-up resistors
   GPIOA->CRL &= ~(GPIO_CRL_CNF4 | GPIO_CRL_CNF5 | GPIO_CRL_CNF6);
-  GPIOA->CRL |= (GPIO_CRL_MODE4_0 | GPIO_CRL_MODE5_0 | GPIO_CRL_MODE6_0);
+  GPIOA->CRL |= 0x08880000;
   GPIOA->ODR |= (1 << 4) | (1 << 5) | (1 << 6);
 
   // PA8 as alternate function output open-drain
@@ -42,7 +43,7 @@ int main()
   GPIOB->CRH = 0x11100000;
 
   // Select PA4, PA5, and PA6 as interrupt inputs
-  AFIO->EXTICR[1] |= (1<<0)|(1<<4)|(1<<8);
+  AFIO->EXTICR[1] |= (1<<0)|(1<<4)|(1<<8); 
 
   // choose edge RTSR FTSR
   // Set the interrupt trigger to rising edge
@@ -53,7 +54,8 @@ int main()
   EXTI->IMR |= EXTI_IMR_MR4 | EXTI_IMR_MR5 | EXTI_IMR_MR6;
 
   // enable EXTI interrupt ISER on the NVIC_EnableIRQ function
-  NVIC_EnableIRQ(EXTI1_IRQn); //enable EXTI1 interrupt
+  NVIC_EnableIRQ(EXTI4_IRQn); //enable EXTI4 interrupt
+  NVIC_EnableIRQ(EXTI9_5_IRQn); //enable EXTI9_5_IRQn interrupt
 
   // configure pwm
   // duty cycle = (TIMx_CCRn*100)/(TIMx_ARR+1)
@@ -79,6 +81,10 @@ int main()
   TIM2->EGR = 1;     // UG=1
   TIM2->CR1 |= 0x01; // timer enable (CEN=1)
 
+  // set white
+  // make PB13 high, PB14 high, PB15 high
+  GPIOB->BSRR = (1 << 13) | (1 << 14) | (1 << 15);
+
   // infinite loop to wait for interrupts
   __enable_irq(); //enable interrupt globally
   while (1) {
@@ -95,13 +101,13 @@ void EXTI4_IRQHandler(void)
 
     // Interrupt code here
     // set red
-    // make PB13 high, PB14 low, PB15 low
-    GPIOB->BSRR = (1 << 13) | (1 << 30) | (1 << 31);
+    // make PB13 low, PB14 low, PB15 high
+    GPIOB->BSRR = (1 << 29) | (1 << 30) | (1 << 15);
     TIM2->CCR1 = 0; // duty cycle 0%
   }
 }
 
-void EXTI5_IRQHandler(void)
+void EXTI9_5_IRQHandler(void)
 {
   // Interrupt handler for PA5
   if (EXTI->PR & EXTI_PR_PR5)
@@ -115,11 +121,7 @@ void EXTI5_IRQHandler(void)
     GPIOB->BSRR = (1 << 29) | (1 << 14) | (1 << 31);
     TIM2->CCR1 = 500; // duty cycle 50%
   }
-}
-
-void EXTI6_IRQHandler(void)
-{
-  // Interrupt handler for PA6
+    // Interrupt handler for PA6
   if (EXTI->PR & EXTI_PR_PR6)
   {
     // Clear the interrupt pending bit
@@ -127,8 +129,8 @@ void EXTI6_IRQHandler(void)
 
     // Interrupt code here
     // set blue
-    // make PB13 low, PB14 low, PB15 high
-    GPIOB->BSRR = (1 << 29) | (1 << 30) | (1 << 15);
+    // make PB13 high, PB14 low, PB15 low
+    GPIOB->BSRR = (1 << 13) | (1 << 30) | (1 << 31);
     TIM2->CCR1 = 1000; // duty cycle 100%
   }
 }
