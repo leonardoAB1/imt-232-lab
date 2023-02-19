@@ -385,14 +385,14 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
-            </File>
-            <File>
               <FileName>main.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\main.h</FilePath>
+            </File>
+            <File>
+              <FileName>main_interrupts.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\main_interrupts.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -27,9 +27,6 @@
 #include "stm32f10x.h"
 #include "stdio.h"
 
-void EXTI4_IRQHandler(void) __attribute__((interrupt));
-void EXTI9_5_IRQHandler(void) __attribute__((interrupt));
-
 #endif
 
 	
