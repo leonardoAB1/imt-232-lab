@@ -1,7 +1,13 @@
 .vscode/*
-lab_00/Documentation/*
+documentation/*
+
+lab_00/EventRecorderStub.scvd
 lab_00/lab_00.uvguix.ZEPHYRUS
 lab_00/Simulation_Proteus/*
 lab_00/Objects/*
 lab_00/Listings/*
-lab_00/EventRecorderStub.scvd
+
+lab_01/EventRecorderStub.scvd
+lab_01/lab_01.uvguix.ZEPHYRUS
+lab_01/Objects/*
+lab_01/Listings/*
