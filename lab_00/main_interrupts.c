@@ -7,11 +7,11 @@
  * This program sets the outputs of a Blue Pill development board based on inputs
  * received from buttons connected to the board. The program sets three digital
  * inputs, PA4, PA5, and PA6, with pull-up resistors and four outputs, PB13,
- * PB14, PB15, and PA8(PWM). The inputs control the duty cycle of a PWM signal on PA8
+ * PB14, PB15, and PA0(PWM). The inputs control the duty cycle of a PWM signal on PA0
  * and the color of an RGB LED connected to the board.
  *
  * PA4: button_1: Set color red, duty cycle 0%
- * PA5: button_2: Set color green, duty cycle 50%
+ * PA5: button_2: Set color yellow, duty cycle 50%
  * PA6: button_3: Set color blue, duty cycle 100%
  *
  * @note        This code is written in C and is used on a Blue Pill development board.
@@ -52,9 +52,9 @@ void EXTI9_5_IRQHandler(void){
     EXTI->PR |= EXTI_PR_PR5;
 
     // Interrupt code here
-    // set green
-    // make PB13 low, PB14 high, PB15 low
-    GPIOB->BSRR = (1 << 29) | (1 << 14) | (1 << 31);
+    // set yellow
+    // make PB13 low, PB14 high, PB15 hihgh
+    GPIOB->BSRR = (1 << 29) | (1 << 14) | (1 << 15);
     TIM2->CCR1 = 500; // duty cycle 50%
   }
   // Interrupt handler for PA6
@@ -81,16 +81,19 @@ int main()
 
   // enable GPIO and TIM2 clocks and AFIO
   RCC->APB2ENR |= (RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPBEN | RCC_APB2ENR_AFIOEN);
-  RCC->APB1ENR |= (1 << 0);
+  // enable clock access to timer2
+  RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
 
   // configure GPIOs
   // PA4, PA5, and PA6 as inputs with pull-up resistors
+  // PA0 as alternate function output open-drain
   GPIOA->CRL &= ~(GPIO_CRL_CNF4 | GPIO_CRL_CNF5 | GPIO_CRL_CNF6);
-  GPIOA->CRL |= 0x08880000;
+  GPIOA->CRL |= 0x0888000D;
   GPIOA->ODR |= (1 << 4) | (1 << 5) | (1 << 6);
 
-  // PA8 as alternate function output open-drain
-  GPIOA->CRH = 0x000D;
+  /*Don't remap the pin*/
+	AFIO->MAPR&=~AFIO_MAPR_TIM2_REMAP;
+
   // PB13 PB14 PB15 as RGB outputs
   GPIOB->CRH = 0x11100000;
 
@@ -130,16 +133,16 @@ int main()
   // (ARR+1)*(PSC+1) = (F_timer_clock/freq_gen_wave)
   // (ARR+1)*(PSC+1) = (72MHz/100)
   // If PSC=719 -> ARR=999
-  TIM2->CCER = 0x1 << 0; // CC1P=0, CC1E=1
-  TIM2->CCMR1 = 0x0068;  // OC1M=PWM1, OC1PE=1
+  TIM2->CCER|= TIM_CCER_CC1E; // CCEP=0, CC1E=1
+  TIM2->CCMR1 |= TIM_CCMR1_OC1M_1|TIM_CCMR1_OC1M_2;  // OC1M=PWM1, OC1PE=1
   TIM2->CR1 = 0x80;      // Auto reload preload enable
-
+  
   TIM2->PSC = 719; // presscaler=719
   TIM2->ARR = 999;
   TIM2->CCR1 = 0; // duty cycle = (TIM2_CCR1*100)/(999+1)
 
   TIM2->EGR = 1;     // UG=1
-  TIM2->CR1 |= 0x01; // timer enable (CEN=1)
+  TIM2->CR1|= TIM_CR1_CEN; // timer enable (CEN=1)
 
   // set white
   // make PB13 high, PB14 high, PB15 high
