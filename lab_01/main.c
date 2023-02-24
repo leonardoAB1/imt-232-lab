@@ -33,7 +33,7 @@ int main()
 	GPIOA->CRH |= 0x00030000;	
 	GPIOB->CRL |= 0x00300030;
   	// make PA12 high, PB1 low, low PB5
-  	GPIOA->BSRR|= (1 << 28);
+  	GPIOA->BSRR|= (1 << 12);
 	GPIOB->BSRR|= (1 << 1)|(1 << 21);
 	
     TaskHandle_t task1_Handle = NULL;
@@ -41,7 +41,7 @@ int main()
 	"Task 1",                   // Text name for the task
     1000,                       // Stack depth in words
 	(void*)pvTask1,	            // Parameter passed into the task
-	1,			                // Priority of the task
+	configMAX_PRIORITIES-1,		// Priority of the task
 	&task1_Handle );		    // Handle to the task
 
     TaskHandle_t task2_Handle = NULL;
@@ -68,9 +68,9 @@ char *pcTaskName = (char *) pvParameters;
 	// Task is implemented in an infinite loop. 
 	while(1)
 	{
-		GPIOB->ODR ^= (GPIO_ODR_ODR1);
+		//GPIOB->ODR ^= (GPIO_ODR_ODR1);
 		GPIOB->ODR ^= (GPIO_ODR_ODR5);
-		GPIOA->ODR ^= (GPIO_ODR_ODR12);
+		// GPIOA->ODR ^= (GPIO_ODR_ODR12);
 		// Delay for a period. 
 		vTaskDelay( 1000 / portTICK_PERIOD_MS );
 	}
@@ -82,9 +82,11 @@ char *pcTaskName = (char *) pvParameters;
 	// Task is implemented in an infinite loop. 
 	while(1)
 	{
-		// GPIOA->ODR ^= (GPIO_ODR_ODR12);
+		// GPIOB->ODR ^= (GPIO_ODR_ODR1);
+		// GPIOB->ODR ^= (GPIO_ODR_ODR5);
+	  GPIOA->ODR ^= (GPIO_ODR_ODR12);
 		// Delay for a period. 
-		vTaskDelay( 1000 / portTICK_PERIOD_MS );
+		vTaskDelay( 750 / portTICK_PERIOD_MS );
 	}
 } 
 /********************************* END OF FILE ********************************/
