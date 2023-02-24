@@ -11,3 +11,5 @@ lab_01/EventRecorderStub.scvd
 lab_01/lab_01.uvguix.ZEPHYRUS
 lab_01/Objects/*
 lab_01/Listings/*
+lab_01/usart.c
+lab_01/usart.h
