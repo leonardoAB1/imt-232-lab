@@ -32,26 +32,28 @@ int main()
   	// PA12 PB1 PB5 as outputs
 	GPIOA->CRH |= 0x00030000;	
 	GPIOB->CRL |= 0x00300030;
-  	// make PA12 high, PB1 low, low PB5
+  	// make PA12 high, PB1 high, low high
   	GPIOA->BSRR|= (1 << 12);
-	GPIOB->BSRR|= (1 << 1)|(1 << 21);
+	GPIOB->BSRR|= (1 << 1)|(1 << 5);
 	
+	TaskHandle_t task2_Handle = NULL;
+    xTaskCreate(vTask2,         // Pointer to the function
+	"Task 2",                   // Text name for the task
+    1000,                       // Stack depth in words configMINIMAL_STACK_SIZE
+	(void*)pvTask2,	            // Parameter passed into the task
+	1,	    // Priority of the task
+	&task2_Handle );		    // Handle to the task
+	
+
     TaskHandle_t task1_Handle = NULL;
     xTaskCreate(vTask1,         // Pointer to the function
 	"Task 1",                   // Text name for the task
     1000,                       // Stack depth in words
 	(void*)pvTask1,	            // Parameter passed into the task
-	configMAX_PRIORITIES-1,		// Priority of the task
+	1,		// Priority of the task
 	&task1_Handle );		    // Handle to the task
 
-    TaskHandle_t task2_Handle = NULL;
-    xTaskCreate(vTask2,         // Pointer to the function
-	"Task 2",                   // Text name for the task
-    1000,                       // Stack depth in words configMINIMAL_STACK_SIZE
-	(void*)pvTask2,	            // Parameter passed into the task
-	1,			                // Priority of the task
-	&task2_Handle );		    // Handle to the task
-	
+    
     // Start the scheduler so our tasks start executing
 	vTaskStartScheduler();
     /* If all is well we will never reach here as the scheduler will now be
@@ -64,29 +66,31 @@ int main()
 /*-----------------------------------------------------------*/
 void vTask1( void *pvParameters )
 {
-char *pcTaskName = (char *) pvParameters;
+TickType_t xLastWakeTimeTask1;
 	// Task is implemented in an infinite loop. 
 	while(1)
 	{
-		//GPIOB->ODR ^= (GPIO_ODR_ODR1);
-		GPIOB->ODR ^= (GPIO_ODR_ODR5);
+		xLastWakeTimeTask1 = xTaskGetTickCount();
+		GPIOB->ODR ^= (GPIO_ODR_ODR1);
+		// GPIOB->ODR ^= (GPIO_ODR_ODR5);
 		// GPIOA->ODR ^= (GPIO_ODR_ODR12);
 		// Delay for a period. 
-		vTaskDelay( 1000 / portTICK_PERIOD_MS );
+		vTaskDelayUntil( &xLastWakeTimeTask1, pdMS_TO_TICKS( 1000 ) );
 	}
 }
 /*-----------------------------------------------------------*/
 void vTask2( void *pvParameters )
 {
-char *pcTaskName = (char *) pvParameters;
+TickType_t xLastWakeTimeTask2;
 	// Task is implemented in an infinite loop. 
 	while(1)
 	{
+		xLastWakeTimeTask2 = xTaskGetTickCount();
 		// GPIOB->ODR ^= (GPIO_ODR_ODR1);
 		// GPIOB->ODR ^= (GPIO_ODR_ODR5);
-	  GPIOA->ODR ^= (GPIO_ODR_ODR12);
+	  	 GPIOA->ODR ^= (GPIO_ODR_ODR12);
 		// Delay for a period. 
-		vTaskDelay( 750 / portTICK_PERIOD_MS );
+		vTaskDelayUntil( &xLastWakeTimeTask2, pdMS_TO_TICKS( 1000 ) );
 	}
 } 
 /********************************* END OF FILE ********************************/
