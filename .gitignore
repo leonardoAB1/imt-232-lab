@@ -1,5 +1,5 @@
 .vscode/*
-documentation/*
+.inform/*
 
 lab_00/EventRecorderStub.scvd
 lab_00/lab_00.uvguix.ZEPHYRUS
