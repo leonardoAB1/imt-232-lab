@@ -33,7 +33,7 @@ int main()
 	GPIOA->CRH |= 0x00030000;	
 	GPIOB->CRL |= 0x00300030;
   	// make PA12 high, PB1 high, low high
-  GPIOA->BSRR|= (1 << 12);
+  	GPIOA->BSRR|= (1 << 12);
 	GPIOB->BSRR|= (1 << 1)|(1 << 5);
 	
 	TaskHandle_t task2_Handle = NULL;

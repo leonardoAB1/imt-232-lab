@@ -1,0 +1,19 @@
+Dependencies for Project 'nucleo_blink', Target 'Target 1': (DO NOT MODIFY !)
+CompilerVersion: 6190000::V6.19::ARMCLANG
+F (.\main.c)(0x640B53B5)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/Device/STM32F446RETx-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/josejesuscp/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/josejesuscp/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/include-IC:/Users/josejesuscp/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/portable/GCC/ARM_CM4F-IC:/Users/josejesuscp/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/josejesuscp/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-IC:/Users/josejesuscp/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/STM32F4xx_HAL_Driver/Inc-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F446xx -D_RTE_  -include "Pre_Include_Global.h"-o ./objects/main.o -MD)
+I (RTE\_Target_1\Pre_Include_Global.h)(0x6408FD38)
+F (.\gpio.c)(0x640B53B5)()
+F (.\gpio.h)(0x640B53B5)()
+F (RTE/Device/STM32F446RETx/RTE_Device.h)(0x640B53B7)()
+F (RTE/Device/STM32F446RETx/stm32f4xx_hal_conf.h)(0x640B53B7)()
+F (RTE/Device/STM32F103C6/RTE_Device.h)(0x5FC0F8AA)()
+F (RTE/Device/STM32F103C6/startup_stm32f10x_ld.s)(0x61AE221E)()
+F (RTE/Device/STM32F103C6/system_stm32f10x.c)(0x61AE221E)()
+F (C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/CMSIS/RTOS2/FreeRTOS/Source/freertos_evr.c)(0x63875CE0)()
+F (C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/list.c)(0x63875CE0)()
+F (C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/portable/MemMang/heap_4.c)(0x63875CE0)()
+F (C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/queue.c)(0x63875CE0)()
+F (C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/tasks.c)(0x63875CE0)()
+F (C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/timers.c)(0x63875CE0)()
+F (RTE/RTOS/FreeRTOSConfig.h)(0x640B53B7)()
+F (C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/portable/GCC/ARM_CM3/port.c)(0x63875CE0)()
