@@ -39,7 +39,7 @@ int main(){
 
 
 void vSimpleDelay(void) {
-	uint32_t nCount = rand() % RDIV * RAMT  + RMIN;
+	uint32_t nCount = 72000000;
 	for(uint32_t i=0; i < nCount; i++) {
 		__NOP();
 	}
@@ -62,11 +62,11 @@ void vSimpleDelay(void) {
 void vTask1(void* pvParameters){
 
 		// Critical section starts from here!
-		GPIOA->ODR |= GREEN;
-		Access(RED);
+		GPIOB->ODR |= GREEN;
+		Access(RED); //set RED
 		vSimpleDelay();
-		Release(RED);
-		GPIOA->ODR &= ~GREEN;
+		Release(RED); //borrar valor del registro
+		GPIOB->ODR &= ~GREEN;
 		// Critical section ends here!
 			
 		vTaskDelete(NULL);

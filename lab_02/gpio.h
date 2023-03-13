@@ -14,9 +14,9 @@
 
 
 // TODO: Change this registers to yours
-#define GREEN    	GPIO_ODR_ODR1								// Initial number of waiting cycles
-#define RED      	GPIO_ODR_ODR5								// Initial number of waiting cycles
-#define BLUE     	GPIO_ODR_ODR12								// Initial number of waiting cycles
+#define GREEN    	GPIO_ODR_ODR1								// Initial number of waiting cycles GPIOB->ODR
+#define RED      	GPIO_ODR_ODR12								// Initial number of waiting cycles GPIOA->ODR
+#define BLUE     	GPIO_ODR_ODR13								// Initial number of waiting cycles GPIOC->ODR
 
 
 /*

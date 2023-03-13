@@ -15,7 +15,15 @@
 */
 void Access(unsigned int color) {
 	// set green led to 1
-  GPIOA->ODR |= color;
+  	if (color==BLUE){
+		GPIOC->ODR |= color;
+		}	
+	else if (color==GREEN){
+		GPIOB->ODR |= color;
+		}	
+	else if (color==RED){
+		GPIOA->ODR |= color;
+		}	
 }
 
 
@@ -31,8 +39,18 @@ void Access(unsigned int color) {
 */
 void Release(unsigned int color) {
 	// set red led to 0
-	GPIOA->ODR &= ~color;	
+	if (color==BLUE){
+		GPIOC->ODR &= ~color;
+		}	
+	else if (color==GREEN){
+		GPIOB->ODR &= ~color;
+		}	
+	else if (color==RED){
+		GPIOA->ODR &= ~color;
+		}	
+
 }
+
 
 
 /*
@@ -61,13 +79,7 @@ int Check(unsigned short color) {
 *     Change this function corresponding to your platform
 */
 void setup_RCC(void) {
-	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN|RCC_APB2ENR_IOPBEN; //enable GPIO clock
-  	// PA12 PB1 PB5 as outputs
-	GPIOA->CRH |= 0x00030000;	
-	GPIOB->CRL |= 0x00300030;
-  	// make PA12 high, PB1 high, low high
-  	GPIOA->BSRR|= (1 << 12);
-	GPIOB->BSRR|= (1 << 1)|(1 << 5);
+	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN|RCC_APB2ENR_IOPBEN|RCC_APB2ENR_IOPCEN; //enable GPIO clock
 }
 
 /*
@@ -81,6 +93,13 @@ void setup_RCC(void) {
 *     Change this functions corresponding to your platform
 */
 void setup_GPIO(void){
-	
+	// PA12 PB1 PB5 as outputs
+	GPIOA->CRH |= 0x00030000;	
+	GPIOB->CRL |= 0x00000030;
+	GPIOC->CRH |= 0x00300000;
+  	// make PA12 high, PB1 high, PC13 high
+  	GPIOA->BSRR|= (1 << 12);
+	GPIOB->BSRR|= (1 << 1);
+	GPIOC->BSRR|= (1 << 13);
 }
 
