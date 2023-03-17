@@ -31,11 +31,11 @@ int main()
     RCC->APB2ENR |= RCC_APB2ENR_IOPAEN|RCC_APB2ENR_IOPBEN|RCC_APB2ENR_IOPCEN; //enable GPIO clock
   	// PA12 PB1 PB4 as outputs
 	GPIOA->CRH |= 0x00030000;	
-	GPIOB->CRL |= 0x00330030;
+	GPIOB->CRL |= 0x00000030;
 	GPIOC->CRH |= 0x00300000;
   	// make PA12 high, PB1 high, low high
   GPIOA->BSRR|= (1 << 12);
-	GPIOB->BSRR|= (1 << 1)|(1 << 5);
+	GPIOB->BSRR|= (1 << 1);
 	GPIOC->BSRR|= (1 << 13);
 	
 	TaskHandle_t task2_Handle = NULL;
@@ -72,12 +72,12 @@ TickType_t xLastWakeTimeTask1;
 	// Task is implemented in an infinite loop. 
 	while(1)
 	{
-		//xLastWakeTimeTask1 = xTaskGetTickCount();
+		xLastWakeTimeTask1 = xTaskGetTickCount();
+		GPIOB->ODR ^= (GPIO_ODR_ODR1);
 		//GPIOB->ODR ^= (GPIO_ODR_ODR1);
-		//GPIOB->ODR ^= (GPIO_ODR_ODR5);
 		GPIOA->ODR ^= (GPIO_ODR_ODR12);
 		// Delay for a period. 
-		//vTaskDelayUntil( &xLastWakeTimeTask1, pdMS_TO_TICKS( 1000 ) );
+		vTaskDelayUntil( &xLastWakeTimeTask1, pdMS_TO_TICKS( 1000 ) );
 	}
 }
 /*-----------------------------------------------------------*/
@@ -87,13 +87,13 @@ TickType_t xLastWakeTimeTask2;
 	// Task is implemented in an infinite loop. 
 	while(1)
 	{
-		//xLastWakeTimeTask2 = xTaskGetTickCount();
-		GPIOA->ODR &= ~(GPIO_ODR_ODR12);
+		xLastWakeTimeTask2 = xTaskGetTickCount();
+		//GPIOA->ODR &= ~(GPIO_ODR_ODR12);
 		//GPIOB->ODR ^= (GPIO_ODR_ODR5);
-		//GPIOC->ODR ^= (GPIO_ODR_ODR13);
+		GPIOC->ODR ^= (GPIO_ODR_ODR13);
 	  //GPIOA->ODR ^= (GPIO_ODR_ODR12);
 		// Delay for a period. 
-		//vTaskDelayUntil( &xLastWakeTimeTask2, pdMS_TO_TICKS( 1000 ) );
+		vTaskDelayUntil( &xLastWakeTimeTask2, pdMS_TO_TICKS( 1000 ) );
 	}
 } 
 /********************************* END OF FILE ********************************/

@@ -5,7 +5,7 @@
 #include "gpio.h"
 
 // Simple random delay
-void vSimpleDelay(void);
+void vSimpleDelay(uint32_t  t);
 
 // TODO: Global Variables here
 
@@ -38,11 +38,10 @@ int main(){
 
 
 
-void vSimpleDelay(void) {
-	uint32_t nCount = 72000000;
-	for(uint32_t i=0; i < nCount; i++) {
-		__NOP();
-	}
+void vSimpleDelay(uint32_t  t)
+{
+	t*=10000; //Multiply by 10000 to get delay in ms
+	for (uint32_t i=0; i<t; i++) __NOP();
 }
 
 /*
@@ -64,7 +63,7 @@ void vTask1(void* pvParameters){
 		// Critical section starts from here!
 		GPIOB->ODR |= GREEN;
 		Access(RED); //set RED
-		vSimpleDelay();
+		vSimpleDelay(1000);
 		Release(RED); //borrar valor del registro
 		GPIOB->ODR &= ~GREEN;
 		// Critical section ends here!
@@ -77,7 +76,7 @@ void vTask2(void* pvParameters){
 		// Critical section starts from here!
 		GPIOA->ODR |= BLUE;
 		Access(RED);
-		vSimpleDelay();
+		vSimpleDelay(1000);
 		Release(RED);
 		GPIOA->ODR &= ~BLUE;
 		// Critical section ends here!

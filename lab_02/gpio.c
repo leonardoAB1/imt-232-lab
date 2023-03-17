@@ -16,7 +16,7 @@
 void Access(unsigned int color) {
 	// set green led to 1
   	if (color==BLUE){
-		GPIOC->ODR |= color;
+		GPIOC->ODR &= ~color;
 		}	
 	else if (color==GREEN){
 		GPIOB->ODR |= color;
@@ -40,7 +40,7 @@ void Access(unsigned int color) {
 void Release(unsigned int color) {
 	// set red led to 0
 	if (color==BLUE){
-		GPIOC->ODR &= ~color;
+		GPIOC->ODR |= color;
 		}	
 	else if (color==GREEN){
 		GPIOB->ODR &= ~color;
@@ -93,13 +93,13 @@ void setup_RCC(void) {
 *     Change this functions corresponding to your platform
 */
 void setup_GPIO(void){
-	// PA12 PB1 PB5 as outputs
+	// PA12 PB1 PC13 as outputs
 	GPIOA->CRH |= 0x00030000;	
 	GPIOB->CRL |= 0x00000030;
 	GPIOC->CRH |= 0x00300000;
   	// make PA12 high, PB1 high, PC13 high
-  	GPIOA->BSRR|= (1 << 12);
-	GPIOB->BSRR|= (1 << 1);
-	GPIOC->BSRR|= (1 << 13);
+  GPIOA->ODR|= GPIO_ODR_ODR12;
+	GPIOB->ODR|= GPIO_ODR_ODR1;
+	GPIOC->ODR&= ~GPIO_ODR_ODR13;
 }
 
