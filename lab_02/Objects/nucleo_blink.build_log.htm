@@ -27,8 +27,7 @@ Project File Date:  03/13/2023
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
-main.c(5): warning: In file included from...
-./gpio.h(7): warning: In file included from...
+RTE/Device/STM32F103C6/system_stm32f10x.c(64): warning: In file included from...
 C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
                                                ^
@@ -38,46 +37,17 @@ C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Includ
 C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *           - Macros to access peripheral<92>s registers hardware
                                            ^
-main.c(19): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-int main(){
-        ^
-         void
-main.c(24): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
-        BaseType_t result = pdPASS;
-                   ^
-main.c(68): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-                GPIOB->ODR &= ~GREEN;
-                           ~~ ^~~~~~
-main.c(61): warning: unused parameter 'pvParameters' [-Wunused-parameter]
-void vTask1(void* pvParameters){
-                  ^
-main.c(81): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-                GPIOA->ODR &= ~BLUE;
-                           ~~ ^~~~~
-main.c(74): warning: unused parameter 'pvParameters' [-Wunused-parameter]
-void vTask2(void* pvParameters){
-                  ^
-9 warnings generated.
-compiling main.c...
-compiling timers.c...
-gpio.c(2): warning: In file included from...
-./gpio.h(7): warning: In file included from...
-C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  *              - To use or not the peripheral<92>s drivers in application code(i.e. 
-                                               ^
-C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  *                code will be based on direct access to peripheral<92>s registers 
-                                                                    ^
-C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  *           - Macros to access peripheral<92>s registers hardware
-                                           ^
-gpio.c(103): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-        GPIOC->ODR&= ~GPIO_ODR_ODR13;
-                  ~~ ^~~~~~~~~~~~~~~
+RTE/Device/STM32F103C6/system_stm32f10x.c(166): warning: no previous extern declaration for non-static variable 'AHBPrescTable' [-Wmissing-variable-declarations]
+__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+            ^
+RTE/Device/STM32F103C6/system_stm32f10x.c(166): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+    ^
 4 warnings generated.
-compiling gpio.c...
-assembling startup_stm32f10x_ld.s...
+compiling system_stm32f10x.c...
+compiling timers.c...
 compiling list.c...
+assembling startup_stm32f10x_ld.s...
 C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/portable/GCC/ARM_CM3/port.c(209): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
     configASSERT( uxCriticalNesting == ~0UL );
                                              ^
@@ -107,7 +77,8 @@ C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/porta
                                                                                          ^
 9 warnings generated.
 compiling port.c...
-RTE/Device/STM32F103C6/system_stm32f10x.c(64): warning: In file included from...
+gpio.c(2): warning: In file included from...
+./gpio.h(7): warning: In file included from...
 C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
                                                ^
@@ -117,14 +88,46 @@ C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Includ
 C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *           - Macros to access peripheral<92>s registers hardware
                                            ^
-RTE/Device/STM32F103C6/system_stm32f10x.c(166): warning: no previous extern declaration for non-static variable 'AHBPrescTable' [-Wmissing-variable-declarations]
-__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
-            ^
-RTE/Device/STM32F103C6/system_stm32f10x.c(166): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
-    ^
-4 warnings generated.
-compiling system_stm32f10x.c...
+gpio.c(101): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+        GPIOA->ODR &= ~GPIO_ODR_ODR12;
+                   ~~ ^~~~~~~~~~~~~~~
+gpio.c(102): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+        GPIOB->ODR &= ~GPIO_ODR_ODR1;
+                   ~~ ^~~~~~~~~~~~~~
+5 warnings generated.
+compiling gpio.c...
+main.c(5): warning: In file included from...
+./gpio.h(7): warning: In file included from...
+C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+                                               ^
+C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  *                code will be based on direct access to peripheral<92>s registers 
+                                                                    ^
+C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  *           - Macros to access peripheral<92>s registers hardware
+                                           ^
+main.c(19): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+int main(){
+        ^
+         void
+main.c(24): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+        BaseType_t result = pdPASS;
+                   ^
+main.c(63): warning: unused parameter 'pvParameters' [-Wunused-parameter]
+void vTask1(void* pvParameters){
+                  ^
+main.c(78): warning: unused parameter 'pvParameters' [-Wunused-parameter]
+void vTask2(void* pvParameters){
+                  ^
+main.c(11): warning: no previous extern declaration for non-static variable 'xMutex' [-Wmissing-variable-declarations]
+SemaphoreHandle_t xMutex;
+                  ^
+main.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+SemaphoreHandle_t xMutex;
+^
+8 warnings generated.
+compiling main.c...
 C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/portable/MemMang/heap_4.c(220): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
                         configASSERT( ( ( ( size_t ) pxNewBlockLink ) & portBYTE_ALIGNMENT_MASK ) == 0 );
                                                                                                         ^
@@ -1213,7 +1216,7 @@ C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/tasks
 102 warnings generated.
 compiling tasks.c...
 linking...
-Program Size: Code=4272 RO-data=272 RW-data=8 ZI-data=11560  
+Program Size: Code=7116 RO-data=272 RW-data=8 ZI-data=11568  
 ".\Objects\nucleo_blink.axf" - 0 Error(s), 269 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -1255,14 +1258,14 @@ Package Vendor: Keil
       Include file:  Config/ARMCM/FreeRTOSConfig.h
 
    * Component: ARM.FreeRTOS::RTOS:Core:Cortex-M:10.5.1
-      Include file:  Source/include/semphr.h
-      Include file:  Source/include/FreeRTOS.h
-      Source file:   Source/tasks.c
-      Include file:  Source/include/task.h
-      Source file:   Source/list.c
       Source file:   Source/portable/GCC/ARM_CM3/port.c
+      Source file:   Source/list.c
+      Include file:  Source/include/task.h
+      Include file:  Source/include/semphr.h
       Include file:  Source/include/queue.h
       Source file:   Source/queue.c
+      Source file:   Source/tasks.c
+      Include file:  Source/include/FreeRTOS.h
       Source file:   CMSIS/RTOS2/FreeRTOS/Source/freertos_evr.c
 
    * Component: ARM.FreeRTOS::RTOS:Heap:Heap_4:10.5.1
@@ -1277,9 +1280,9 @@ Package Vendor: Keil
    * Component: Keil::Device:Startup:1.0.0
       Source file:   Device/Source/ARM/startup_stm32f10x_ld.s
       Include file:  RTE_Driver/Config/RTE_Device.h
-      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
       Source file:   Device/Source/system_stm32f10x.c
-Build Time Elapsed:  00:00:04
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

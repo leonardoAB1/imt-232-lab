@@ -10,6 +10,8 @@
   C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\mpu_wrappers.h \
   C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\task.h \
   C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\list.h \
+  C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\semphr.h \
+  C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\queue.h \
   gpio.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h \
   RTE\_Target_1\RTE_Components.h \

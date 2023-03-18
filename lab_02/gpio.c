@@ -97,9 +97,9 @@ void setup_GPIO(void){
 	GPIOA->CRH |= 0x00030000;	
 	GPIOB->CRL |= 0x00000030;
 	GPIOC->CRH |= 0x00300000;
-  	// make PA12 high, PB1 high, PC13 high
-  GPIOA->ODR|= GPIO_ODR_ODR12;
-	GPIOB->ODR|= GPIO_ODR_ODR1;
-	GPIOC->ODR&= ~GPIO_ODR_ODR13;
+  	// make PA12 low, PB1 low, PC13 low
+  	GPIOA->ODR &= ~GPIO_ODR_ODR12;
+	GPIOB->ODR &= ~GPIO_ODR_ODR1;
+	GPIOC->ODR |= GPIO_ODR_ODR13;
 }
 
