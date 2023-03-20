@@ -62,6 +62,7 @@ void vTask1(void* pvParameters){
 	while (Check(RED)){
 		__NOP();
 	}
+	vSimpleDelay(2000);
 	// Critical section starts from here!
 	Access(BLUE);
 	Access(RED); //set RED
@@ -76,6 +77,7 @@ void vTask2(void* pvParameters){
 	while (Check(RED)){
 		__NOP();
 	}
+	vSimpleDelay(2000);
 	// Critical section starts from here!
 	Access(GREEN);
 	Access(RED);
@@ -92,7 +94,12 @@ void vTask2(void* pvParameters){
 		en teoria se deberian prender y apagar el led verde, 
 		azul y rojo. Tras cargar el codigo observamos que el
 		LED azul se queda prendido.
-1.4. 	Se desarrolla la task2 y a continuación la task1.
+1.4. 	Se desarrolla la task2 y a continuación la task1. Por tanto, 
+		da la impresion de que esto impone mutex(mutual exclusion).
+1.5. 	En efecto, hay un momento en el que los tres LEDs
+		se encuentran prendidos. Esto implica que el cronograma
+		hace el cambio entre tasks para que se ejecuten de
+		manera concurrente.
 
 		Tras crear el semaforo se observa la siguiente secuencia:
 		VERDE Y ROJO
