@@ -8,7 +8,6 @@
 void vSimpleDelay(uint32_t  t);
 
 // TODO: Global Variables here
-SemaphoreHandle_t xMutex;
 
 // END TODO
 
@@ -17,9 +16,10 @@ void vTask1(void* pvParameters);
 void vTask2(void* pvParameters);
 
 int main(){
-
+	//__disable_irq();
 	setup_RCC();
 	setup_GPIO();
+	//__enable_irq();
 
 	BaseType_t result = pdPASS;
 	
@@ -28,8 +28,6 @@ int main(){
 	
 	result = xTaskCreate(vTask2, "Task 2", configMINIMAL_STACK_SIZE, NULL, 1, NULL);
 	configASSERT(result == pdPASS)
-	
-	xMutex = xSemaphoreCreateMutex();
 
 	vTaskStartScheduler();
 	
@@ -61,42 +59,44 @@ void vSimpleDelay(uint32_t  t)
 *     Exercise 2: Semph
 */
 void vTask1(void* pvParameters){
-
-		xSemaphoreTake(xMutex, portMAX_DELAY);
-		// Critical section starts from here!
-		Access(BLUE);
-		Access(RED); //set RED
-		vSimpleDelay(1000);
-		Release(RED); //borrar valor del registro
-		Release(BLUE);
-		// Critical section ends here!
-		vSimpleDelay(1000);
-		xSemaphoreGive(xMutex);
-		vTaskDelete(NULL);
+	while (Check(RED)){
+		__NOP();
+	}
+	// Critical section starts from here!
+	Access(BLUE);
+	Access(RED); //set RED
+	vSimpleDelay(1000);
+	Release(RED); //borrar valor del registro
+	Release(BLUE);
+	// Critical section ends here!
+	vTaskDelete(NULL);
 }
 
 void vTask2(void* pvParameters){
-
-		xSemaphoreTake(xMutex, portMAX_DELAY);
-		// Critical section starts from here!
-		Access(GREEN);
-		Access(RED);
-		vSimpleDelay(1000);
-		Release(RED);
-		Release(GREEN);
-		// Critical section ends here!
-		vSimpleDelay(1000);
-		xSemaphoreGive(xMutex);
-		vTaskDelete(NULL);
+	while (Check(RED)){
+		__NOP();
+	}
+	// Critical section starts from here!
+	Access(GREEN);
+	Access(RED);
+	vSimpleDelay(1000);
+	Release(RED);
+	Release(GREEN);
+	// Critical section ends here!
+	vTaskDelete(NULL);
 }
 
 /*RESPUESTAS
 1.2. 	El task1 se realiza sin problema.
 1.3. 	Al descomentar el task2 se crea la segunda task, 
 		en teoria se deberian prender y apagar el led verde, 
-		azul y rojo. Tras cargar el codigo observamos que eso pasa.
+		azul y rojo. Tras cargar el codigo observamos que el
+		LED azul se queda prendido.
+1.4. 	Se desarrolla la task2 y a continuación la task1.
+
 		Tras crear el semaforo se observa la siguiente secuencia:
 		VERDE Y ROJO
 		AZUL Y ROJO
 		Es decir, las 2 task se ejecutan secuancialmente.
+
 */
