@@ -8,6 +8,7 @@
 void vSimpleDelay(uint32_t  t);
 
 // TODO: Global Variables here
+uint8_t token = 0;
 
 // END TODO
 
@@ -59,7 +60,7 @@ void vSimpleDelay(uint32_t  t)
 *     Exercise 2: Semph
 */
 void vTask1(void* pvParameters){
-	while (Check(RED)){
+	while (token!=0){
 		__NOP();
 	}
 	vSimpleDelay(2000);
@@ -70,11 +71,12 @@ void vTask1(void* pvParameters){
 	Release(RED); //borrar valor del registro
 	Release(BLUE);
 	// Critical section ends here!
+	token=1-token;
 	vTaskDelete(NULL);
 }
 
 void vTask2(void* pvParameters){
-	while (Check(RED)){
+	while (token!=1){
 		__NOP();
 	}
 	vSimpleDelay(2000);
@@ -85,6 +87,7 @@ void vTask2(void* pvParameters){
 	Release(RED);
 	Release(GREEN);
 	// Critical section ends here!
+	token=1-token;
 	vTaskDelete(NULL);
 }
 
@@ -94,12 +97,16 @@ void vTask2(void* pvParameters){
 		en teoria se deberian prender y apagar el led verde, 
 		azul y rojo. Tras cargar el codigo observamos que el
 		LED azul se queda prendido.
-1.4. 	Se desarrolla la task2 y a continuación la task1. Por tanto, 
+1.4. 	MUTEX: CHECK
+		Se desarrolla la task2 y a continuación la task1. Por tanto, 
 		da la impresion de que esto impone mutex(mutual exclusion).
 1.5. 	En efecto, hay un momento en el que los tres LEDs
 		se encuentran prendidos. Esto implica que el cronograma
 		hace el cambio entre tasks para que se ejecuten de
-		manera concurrente.
+		manera concurrente DURANTE la seccion critica.
+1.6.	MUTEX: TOKEN
+		A primera vista el uso del token 
+		pareciera imponer mutex.
 
 		Tras crear el semaforo se observa la siguiente secuencia:
 		VERDE Y ROJO
