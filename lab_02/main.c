@@ -9,6 +9,7 @@ void vSimpleDelay(uint32_t  t);
 
 // TODO: Global Variables here
 uint8_t token = 0;
+uint8_t flag[2]={0,0};
 
 // END TODO
 
@@ -60,7 +61,9 @@ void vSimpleDelay(uint32_t  t)
 *     Exercise 2: Semph
 */
 void vTask1(void* pvParameters){
-	while (token!=0){
+	flag[0]=1;
+
+	while (flag[1]){
 		__NOP();
 	}
 	vSimpleDelay(2000);
@@ -71,12 +74,14 @@ void vTask1(void* pvParameters){
 	Release(RED); //borrar valor del registro
 	Release(BLUE);
 	// Critical section ends here!
-	token=1-token;
+	flag[0]=0;
 	vTaskDelete(NULL);
 }
 
 void vTask2(void* pvParameters){
-	while (token!=1){
+	flag[1]=1;
+
+	while (flag[0]){
 		__NOP();
 	}
 	vSimpleDelay(2000);
@@ -87,7 +92,7 @@ void vTask2(void* pvParameters){
 	Release(RED);
 	Release(GREEN);
 	// Critical section ends here!
-	token=1-token;
+	flag[1]=0;
 	vTaskDelete(NULL);
 }
 
@@ -107,6 +112,8 @@ void vTask2(void* pvParameters){
 1.6.	MUTEX: TOKEN
 		A primera vista el uso del token 
 		pareciera imponer mutex.
+1.7.	A primera vista el uso del flags 
+		pareciera imponer mutex. 
 
 		Tras crear el semaforo se observa la siguiente secuencia:
 		VERDE Y ROJO

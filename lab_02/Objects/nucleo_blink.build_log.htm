@@ -27,7 +27,8 @@ Project File Date:  03/13/2023
 <h2>Output:</h2>
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target 1'
-RTE/Device/STM32F103C6/system_stm32f10x.c(64): warning: In file included from...
+main.c(5): warning: In file included from...
+./gpio.h(7): warning: In file included from...
 C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
                                                ^
@@ -37,14 +38,49 @@ C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Includ
 C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *           - Macros to access peripheral<92>s registers hardware
                                            ^
-RTE/Device/STM32F103C6/system_stm32f10x.c(166): warning: no previous extern declaration for non-static variable 'AHBPrescTable' [-Wmissing-variable-declarations]
-__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
-            ^
-RTE/Device/STM32F103C6/system_stm32f10x.c(166): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
-    ^
-4 warnings generated.
-compiling system_stm32f10x.c...
+main.c(11): warning: no previous extern declaration for non-static variable 'token' [-Wmissing-variable-declarations]
+uint8_t token = 0;
+        ^
+main.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t token = 0;
+^
+main.c(12): warning: no previous extern declaration for non-static variable 'flag' [-Wmissing-variable-declarations]
+uint8_t flag[2]={0,0};
+        ^
+main.c(12): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+uint8_t flag[2]={0,0};
+^
+main.c(20): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+int main(){
+        ^
+         void
+main.c(26): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+        BaseType_t result = pdPASS;
+                   ^
+main.c(63): warning: unused parameter 'pvParameters' [-Wunused-parameter]
+void vTask1(void* pvParameters){
+                  ^
+main.c(81): warning: unused parameter 'pvParameters' [-Wunused-parameter]
+void vTask2(void* pvParameters){
+                  ^
+9 warnings generated.
+compiling main.c...
+compiling list.c...
+compiling timers.c...
+gpio.c(2): warning: In file included from...
+./gpio.h(7): warning: In file included from...
+C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+                                               ^
+C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  *                code will be based on direct access to peripheral<92>s registers 
+                                                                    ^
+C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  *           - Macros to access peripheral<92>s registers hardware
+                                           ^
+3 warnings generated.
+compiling gpio.c...
+assembling startup_stm32f10x_ld.s...
 C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/portable/GCC/ARM_CM3/port.c(209): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
     configASSERT( uxCriticalNesting == ~0UL );
                                              ^
@@ -74,10 +110,7 @@ C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/porta
                                                                                          ^
 9 warnings generated.
 compiling port.c...
-compiling timers.c...
-compiling list.c...
-main.c(5): warning: In file included from...
-./gpio.h(7): warning: In file included from...
+RTE/Device/STM32F103C6/system_stm32f10x.c(64): warning: In file included from...
 C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *              - To use or not the peripheral<92>s drivers in application code(i.e. 
                                                ^
@@ -87,41 +120,14 @@ C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Includ
 C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
   *           - Macros to access peripheral<92>s registers hardware
                                            ^
-main.c(11): warning: no previous extern declaration for non-static variable 'token' [-Wmissing-variable-declarations]
-uint8_t token = 0;
-        ^
-main.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-uint8_t token = 0;
-^
-main.c(19): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-int main(){
-        ^
-         void
-main.c(25): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
-        BaseType_t result = pdPASS;
-                   ^
-main.c(62): warning: unused parameter 'pvParameters' [-Wunused-parameter]
-void vTask1(void* pvParameters){
-                  ^
-main.c(78): warning: unused parameter 'pvParameters' [-Wunused-parameter]
-void vTask2(void* pvParameters){
-                  ^
-8 warnings generated.
-compiling main.c...
-assembling startup_stm32f10x_ld.s...
-gpio.c(2): warning: In file included from...
-./gpio.h(7): warning: In file included from...
-C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  *              - To use or not the peripheral<92>s drivers in application code(i.e. 
-                                               ^
-C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  *                code will be based on direct access to peripheral<92>s registers 
-                                                                    ^
-C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
-  *           - Macros to access peripheral<92>s registers hardware
-                                           ^
-3 warnings generated.
-compiling gpio.c...
+RTE/Device/STM32F103C6/system_stm32f10x.c(166): warning: no previous extern declaration for non-static variable 'AHBPrescTable' [-Wmissing-variable-declarations]
+__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+            ^
+RTE/Device/STM32F103C6/system_stm32f10x.c(166): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+    ^
+4 warnings generated.
+compiling system_stm32f10x.c...
 C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/portable/MemMang/heap_4.c(220): warning: empty expression statement has no effect; remove unnecessary ';' to silence this warning [-Wextra-semi-stmt]
                         configASSERT( ( ( ( size_t ) pxNewBlockLink ) & portBYTE_ALIGNMENT_MASK ) == 0 );
                                                                                                         ^
@@ -1210,8 +1216,8 @@ C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/tasks
 102 warnings generated.
 compiling tasks.c...
 linking...
-Program Size: Code=4448 RO-data=272 RW-data=8 ZI-data=11560  
-".\Objects\nucleo_blink.axf" - 0 Error(s), 267 Warning(s).
+Program Size: Code=4452 RO-data=272 RW-data=8 ZI-data=11568  
+".\Objects\nucleo_blink.axf" - 0 Error(s), 268 Warning(s).
 
 <h2>Software Packages used:</h2>
 
