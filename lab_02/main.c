@@ -64,9 +64,10 @@ void vTask1(void* pvParameters){
 	flag[0]=1;
 
 	while (flag[1]){
-		__NOP();
+		flag[0]=0;
+		vSimpleDelay(2000);
+		flag[0]=1;
 	}
-	vSimpleDelay(2000);
 	// Critical section starts from here!
 	Access(BLUE);
 	Access(RED); //set RED
@@ -82,7 +83,9 @@ void vTask2(void* pvParameters){
 	flag[1]=1;
 
 	while (flag[0]){
-		__NOP();
+		flag[1]=0;
+		vSimpleDelay(2000);
+		flag[1]=1;
 	}
 	vSimpleDelay(2000);
 	// Critical section starts from here!
@@ -115,7 +118,11 @@ void vTask2(void* pvParameters){
 1.7.	A primera vista el uso del flags 
 		pareciera imponer mutex. 
 1.8.	No afecta el resultado. El comportamiento se mantiene
-		estable.
+		estable. Esto es posible que haya pasado debido al
+		tiempo en delay en especifico.
+1.9.	El programa corre como deberia: Se prende los leds
+		verde y rojo, se apagan y luego se prenden los
+		leds azul y rojo para finalmente apagarse.
 
 
 		Tras crear el semaforo se observa la siguiente secuencia:

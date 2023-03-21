@@ -1106,19 +1106,19 @@ Image Symbol Table
     [Anonymous Symbol]                       0x0800080c   Section        0  heap_4.o(.text.vPortFree)
     [Anonymous Symbol]                       0x080008d0   Section        0  port.o(.text.vPortSetupTimerInterrupt)
     [Anonymous Symbol]                       0x080008f4   Section        0  main.o(.text.vTask1)
-    [Anonymous Symbol]                       0x0800095c   Section        0  main.o(.text.vTask2)
-    [Anonymous Symbol]                       0x080009c0   Section        0  tasks.o(.text.vTaskDelete)
-    [Anonymous Symbol]                       0x08000ae4   Section        0  tasks.o(.text.vTaskStartScheduler)
-    [Anonymous Symbol]                       0x08000b78   Section        0  tasks.o(.text.vTaskSuspendAll)
-    __tagsym$$used.0                         0x08000b88   Number         0  tasks.o(.text.vTaskSwitchContext)
-    [Anonymous Symbol]                       0x08000b88   Section        0  tasks.o(.text.vTaskSwitchContext)
-    [Anonymous Symbol]                       0x08000c10   Section        0  port.o(.text.xPortStartScheduler)
-    [Anonymous Symbol]                       0x08000cec   Section        0  tasks.o(.text.xTaskCreate)
-    [Anonymous Symbol]                       0x08000ef0   Section        0  tasks.o(.text.xTaskIncrementTick)
-    [Anonymous Symbol]                       0x080010ac   Section        0  tasks.o(.text.xTaskResumeAll)
-    i.__scatterload_copy                     0x08001230   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x0800123e   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x08001240   Section       14  handlers.o(i.__scatterload_zeroinit)
+    [Anonymous Symbol]                       0x08000960   Section        0  main.o(.text.vTask2)
+    [Anonymous Symbol]                       0x080009d0   Section        0  tasks.o(.text.vTaskDelete)
+    [Anonymous Symbol]                       0x08000af4   Section        0  tasks.o(.text.vTaskStartScheduler)
+    [Anonymous Symbol]                       0x08000b88   Section        0  tasks.o(.text.vTaskSuspendAll)
+    __tagsym$$used.0                         0x08000b98   Number         0  tasks.o(.text.vTaskSwitchContext)
+    [Anonymous Symbol]                       0x08000b98   Section        0  tasks.o(.text.vTaskSwitchContext)
+    [Anonymous Symbol]                       0x08000c20   Section        0  port.o(.text.xPortStartScheduler)
+    [Anonymous Symbol]                       0x08000cfc   Section        0  tasks.o(.text.xTaskCreate)
+    [Anonymous Symbol]                       0x08000f00   Section        0  tasks.o(.text.xTaskIncrementTick)
+    [Anonymous Symbol]                       0x080010bc   Section        0  tasks.o(.text.xTaskResumeAll)
+    i.__scatterload_copy                     0x08001240   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x0800124e   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08001250   Section       14  handlers.o(i.__scatterload_zeroinit)
     uxCriticalNesting                        0x20000004   Data           4  port.o(.data.uxCriticalNesting)
     [Anonymous Symbol]                       0x20000004   Section        0  port.o(.data.uxCriticalNesting)
     __tagsym$$used.1                         0x2000000c   Number         0  tasks.o(.bss.pxCurrentTCB)
@@ -1277,22 +1277,22 @@ Image Symbol Table
     vPortExitCritical                        0x080007dd   Thumb Code    46  port.o(.text.vPortExitCritical)
     vPortFree                                0x0800080d   Thumb Code   194  heap_4.o(.text.vPortFree)
     vPortSetupTimerInterrupt                 0x080008d1   Thumb Code    34  port.o(.text.vPortSetupTimerInterrupt)
-    vTask1                                   0x080008f5   Thumb Code   104  main.o(.text.vTask1)
-    vTask2                                   0x0800095d   Thumb Code    98  main.o(.text.vTask2)
-    vTaskDelete                              0x080009c1   Thumb Code   290  tasks.o(.text.vTaskDelete)
-    vTaskStartScheduler                      0x08000ae5   Thumb Code   140  tasks.o(.text.vTaskStartScheduler)
-    vTaskSuspendAll                          0x08000b79   Thumb Code    16  tasks.o(.text.vTaskSuspendAll)
-    vTaskSwitchContext                       0x08000b89   Thumb Code   134  tasks.o(.text.vTaskSwitchContext)
-    xPortStartScheduler                      0x08000c11   Thumb Code   218  port.o(.text.xPortStartScheduler)
-    xTaskCreate                              0x08000ced   Thumb Code   516  tasks.o(.text.xTaskCreate)
-    xTaskIncrementTick                       0x08000ef1   Thumb Code   442  tasks.o(.text.xTaskIncrementTick)
-    xTaskResumeAll                           0x080010ad   Thumb Code   388  tasks.o(.text.xTaskResumeAll)
-    __scatterload_copy                       0x08001231   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x0800123f   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x08001241   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    uxTopUsedPriority                        0x08001250   Data           4  tasks.o(.rodata.uxTopUsedPriority)
-    Region$$Table$$Base                      0x08001254   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08001274   Number         0  anon$$obj.o(Region$$Table)
+    vTask1                                   0x080008f5   Thumb Code   108  main.o(.text.vTask1)
+    vTask2                                   0x08000961   Thumb Code   110  main.o(.text.vTask2)
+    vTaskDelete                              0x080009d1   Thumb Code   290  tasks.o(.text.vTaskDelete)
+    vTaskStartScheduler                      0x08000af5   Thumb Code   140  tasks.o(.text.vTaskStartScheduler)
+    vTaskSuspendAll                          0x08000b89   Thumb Code    16  tasks.o(.text.vTaskSuspendAll)
+    vTaskSwitchContext                       0x08000b99   Thumb Code   134  tasks.o(.text.vTaskSwitchContext)
+    xPortStartScheduler                      0x08000c21   Thumb Code   218  port.o(.text.xPortStartScheduler)
+    xTaskCreate                              0x08000cfd   Thumb Code   516  tasks.o(.text.xTaskCreate)
+    xTaskIncrementTick                       0x08000f01   Thumb Code   442  tasks.o(.text.xTaskIncrementTick)
+    xTaskResumeAll                           0x080010bd   Thumb Code   388  tasks.o(.text.xTaskResumeAll)
+    __scatterload_copy                       0x08001241   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x0800124f   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08001251   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    uxTopUsedPriority                        0x08001260   Data           4  tasks.o(.rodata.uxTopUsedPriority)
+    Region$$Table$$Base                      0x08001264   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08001284   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000000   Data           4  system_stm32f10x.o(.data.SystemCoreClock)
     flag                                     0x20000008   Data           2  main.o(.bss.flag)
     pxCurrentTCB                             0x2000000c   Data           4  tasks.o(.bss.pxCurrentTCB)
@@ -1306,9 +1306,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000101
 
-  Load Region LR_1 (Base: 0x08000000, Size: 0x0000127c, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x08000000, Size: 0x0000128c, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001274, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001284, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1360,43 +1360,43 @@ Memory Map of the image
     0x080008ce   0x080008ce   0x00000002   PAD
     0x080008d0   0x080008d0   0x00000022   Code   RO          265    .text.vPortSetupTimerInterrupt  port.o
     0x080008f2   0x080008f2   0x00000002   PAD
-    0x080008f4   0x080008f4   0x00000068   Code   RO            4    .text.vTask1        main.o
-    0x0800095c   0x0800095c   0x00000062   Code   RO            6    .text.vTask2        main.o
-    0x080009be   0x080009be   0x00000002   PAD
-    0x080009c0   0x080009c0   0x00000122   Code   RO          386    .text.vTaskDelete   tasks.o
-    0x08000ae2   0x08000ae2   0x00000002   PAD
-    0x08000ae4   0x08000ae4   0x00000094   Code   RO          414    .text.vTaskStartScheduler  tasks.o
-    0x08000b78   0x08000b78   0x00000010   Code   RO          390    .text.vTaskSuspendAll  tasks.o
-    0x08000b88   0x08000b88   0x00000086   Code   RO          408    .text.vTaskSwitchContext  tasks.o
-    0x08000c0e   0x08000c0e   0x00000002   PAD
-    0x08000c10   0x08000c10   0x000000da   Code   RO          263    .text.xPortStartScheduler  port.o
-    0x08000cea   0x08000cea   0x00000002   PAD
-    0x08000cec   0x08000cec   0x00000204   Code   RO          384    .text.xTaskCreate   tasks.o
-    0x08000ef0   0x08000ef0   0x000001ba   Code   RO          420    .text.xTaskIncrementTick  tasks.o
-    0x080010aa   0x080010aa   0x00000002   PAD
-    0x080010ac   0x080010ac   0x00000184   Code   RO          394    .text.xTaskResumeAll  tasks.o
-    0x08001230   0x08001230   0x0000000e   Code   RO          541    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x0800123e   0x0800123e   0x00000002   Code   RO          542    i.__scatterload_null  mc_w.l(handlers.o)
-    0x08001240   0x08001240   0x0000000e   Code   RO          543    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x0800124e   0x0800124e   0x00000002   PAD
-    0x08001250   0x08001250   0x00000004   Data   RO          485    .rodata.uxTopUsedPriority  tasks.o
-    0x08001254   0x08001254   0x00000020   Data   RO          540    Region$$Table       anon$$obj.o
+    0x080008f4   0x080008f4   0x0000006c   Code   RO            4    .text.vTask1        main.o
+    0x08000960   0x08000960   0x0000006e   Code   RO            6    .text.vTask2        main.o
+    0x080009ce   0x080009ce   0x00000002   PAD
+    0x080009d0   0x080009d0   0x00000122   Code   RO          386    .text.vTaskDelete   tasks.o
+    0x08000af2   0x08000af2   0x00000002   PAD
+    0x08000af4   0x08000af4   0x00000094   Code   RO          414    .text.vTaskStartScheduler  tasks.o
+    0x08000b88   0x08000b88   0x00000010   Code   RO          390    .text.vTaskSuspendAll  tasks.o
+    0x08000b98   0x08000b98   0x00000086   Code   RO          408    .text.vTaskSwitchContext  tasks.o
+    0x08000c1e   0x08000c1e   0x00000002   PAD
+    0x08000c20   0x08000c20   0x000000da   Code   RO          263    .text.xPortStartScheduler  port.o
+    0x08000cfa   0x08000cfa   0x00000002   PAD
+    0x08000cfc   0x08000cfc   0x00000204   Code   RO          384    .text.xTaskCreate   tasks.o
+    0x08000f00   0x08000f00   0x000001ba   Code   RO          420    .text.xTaskIncrementTick  tasks.o
+    0x080010ba   0x080010ba   0x00000002   PAD
+    0x080010bc   0x080010bc   0x00000184   Code   RO          394    .text.xTaskResumeAll  tasks.o
+    0x08001240   0x08001240   0x0000000e   Code   RO          541    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0800124e   0x0800124e   0x00000002   Code   RO          542    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08001250   0x08001250   0x0000000e   Code   RO          543    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x0800125e   0x0800125e   0x00000002   PAD
+    0x08001260   0x08001260   0x00000004   Data   RO          485    .rodata.uxTopUsedPriority  tasks.o
+    0x08001264   0x08001264   0x00000020   Data   RO          540    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08001274, Size: 0x00000008, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08001284, Size: 0x00000008, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08001274   0x00000004   Data   RW           52    .data.SystemCoreClock  system_stm32f10x.o
-    0x20000004   0x08001278   0x00000004   Data   RW          283    .data.uxCriticalNesting  port.o
+    0x20000000   0x08001284   0x00000004   Data   RW           52    .data.SystemCoreClock  system_stm32f10x.o
+    0x20000004   0x08001288   0x00000004   Data   RW          283    .data.uxCriticalNesting  port.o
 
 
-    Execution Region ER_ZI (Exec base: 0x20000008, Load base: 0x0800127c, Size: 0x00002d30, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000008, Load base: 0x0800128c, Size: 0x00002d30, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000008        -       0x00000002   Zero   RW           11    .bss.flag           main.o
-    0x2000000a   0x0800127c   0x00000002   PAD
+    0x2000000a   0x0800128c   0x00000002   PAD
     0x2000000c        -       0x00000004   Zero   RW          484    .bss.pxCurrentTCB   tasks.o
     0x20000010        -       0x00000004   Zero   RW          495    .bss.pxDelayedTaskList  tasks.o
     0x20000014        -       0x00000004   Zero   RW          306    .bss.pxEnd          heap_4.o
@@ -1404,7 +1404,7 @@ Memory Map of the image
     0x2000001c        -       0x00000064   Zero   RW          486    .bss.pxReadyTasksLists  tasks.o
     0x20000080        -       0x00002800   Zero   RW          312    .bss.ucHeap         heap_4.o
     0x20002880        -       0x00000001   Zero   RW          281    .bss.ucMaxSysCallPriority  port.o
-    0x20002881   0x0800127c   0x00000003   PAD
+    0x20002881   0x0800128c   0x00000003   PAD
     0x20002884        -       0x00000004   Zero   RW          282    .bss.ulMaxPRIGROUPValue  port.o
     0x20002888        -       0x00000004   Zero   RW          491    .bss.uxCurrentNumberOfTasks  tasks.o
     0x2000288c        -       0x00000004   Zero   RW          490    .bss.uxDeletedTasksWaitingCleanUp  tasks.o
@@ -1428,7 +1428,7 @@ Memory Map of the image
     0x20002918        -       0x00000014   Zero   RW          489    .bss.xTasksWaitingTermination  tasks.o
     0x2000292c        -       0x00000004   Zero   RW          494    .bss.xTickCount     tasks.o
     0x20002930        -       0x00000004   Zero   RW          498    .bss.xYieldPending  tasks.o
-    0x20002934   0x0800127c   0x00000004   PAD
+    0x20002934   0x0800128c   0x00000004   PAD
     0x20002938        -       0x00000400   Zero   RW           38    STACK               startup_stm32f10x_ld.o
 
 
@@ -1442,14 +1442,14 @@ Image component sizes
        250          0          0          0          0       1970   gpio.o
        612          0          0          0      10268       5495   heap_4.o
         92          0          0          0          0       2411   list.o
-       334         16          0          0          2       2622   main.o
+       350         16          0          0          2       2813   main.o
        632         12          0          4          5       3997   port.o
         36          8        236          0       1024        896   startup_stm32f10x_ld.o
        272          0          0          4          0       2855   system_stm32f10x.o
       2052          8          4          0        260      36320   tasks.o
 
     ----------------------------------------------------------------------
-      4328         44        272          8      11568      56566   Object Totals
+      4344         44        272          8      11568      56757   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         48          0          0          0          9          0   (incl. Padding)
 
@@ -1489,15 +1489,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      4452         60        272          8      11568      56774   Grand Totals
-      4452         60        272          8      11568      56774   ELF Image Totals
-      4452         60        272          8          0          0   ROM Totals
+      4468         60        272          8      11568      56965   Grand Totals
+      4468         60        272          8      11568      56965   ELF Image Totals
+      4468         60        272          8          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 4724 (   4.61kB)
+    Total RO  Size (Code + RO Data)                 4740 (   4.63kB)
     Total RW  Size (RW Data + ZI Data)             11576 (  11.30kB)
-    Total ROM Size (Code + RO Data + RW Data)       4732 (   4.62kB)
+    Total ROM Size (Code + RO Data + RW Data)       4748 (   4.64kB)
 
 ==============================================================================
 
