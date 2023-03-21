@@ -64,9 +64,16 @@ void vTask1(void* pvParameters){
 	flag[0]=1;
 
 	while (flag[1]){
-		flag[0]=0;
-		vSimpleDelay(2000);
-		flag[0]=1;
+		if (token!=0)
+		{
+			flag[0]=0;
+			while (token!=0)
+			{
+				__NOP();
+			}
+			
+			flag[0]=1;
+		}
 	}
 	// Critical section starts from here!
 	Access(BLUE);
@@ -75,6 +82,7 @@ void vTask1(void* pvParameters){
 	Release(RED); //borrar valor del registro
 	Release(BLUE);
 	// Critical section ends here!
+	token=1-token;
 	flag[0]=0;
 	vTaskDelete(NULL);
 }
@@ -83,9 +91,16 @@ void vTask2(void* pvParameters){
 	flag[1]=1;
 
 	while (flag[0]){
-		flag[1]=0;
-		vSimpleDelay(2000);
-		flag[1]=1;
+		if (token!=0)
+		{
+			flag[1]=0;
+			while (token!=0)
+			{
+				__NOP();
+			}
+			
+			flag[1]=1;
+		}
 	}
 	vSimpleDelay(2000);
 	// Critical section starts from here!
@@ -95,6 +110,7 @@ void vTask2(void* pvParameters){
 	Release(RED);
 	Release(GREEN);
 	// Critical section ends here!
+	token=1-token;
 	flag[1]=0;
 	vTaskDelete(NULL);
 }
@@ -123,6 +139,8 @@ void vTask2(void* pvParameters){
 1.9.	El programa corre como deberia: Se prende los leds
 		verde y rojo, se apagan y luego se prenden los
 		leds azul y rojo para finalmente apagarse.
+1.10. 	No tuvimos problema de livelock.
+1.11.	
 
 
 		Tras crear el semaforo se observa la siguiente secuencia:
