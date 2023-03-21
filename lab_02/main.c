@@ -114,6 +114,9 @@ void vTask2(void* pvParameters){
 		pareciera imponer mutex.
 1.7.	A primera vista el uso del flags 
 		pareciera imponer mutex. 
+1.8.	No afecta el resultado. El comportamiento se mantiene
+		estable.
+
 
 		Tras crear el semaforo se observa la siguiente secuencia:
 		VERDE Y ROJO
