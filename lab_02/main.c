@@ -25,7 +25,7 @@ int main(){
 
 	BaseType_t result = pdPASS;
 	
-	result = xTaskCreate(vTask1, "Task 1", configMINIMAL_STACK_SIZE, NULL, 1, NULL);
+	result = xTaskCreate(vTask1, "Task 1", configMINIMAL_STACK_SIZE, NULL, 2, NULL);
 	configASSERT(result == pdPASS)
 	
 	result = xTaskCreate(vTask2, "Task 2", configMINIMAL_STACK_SIZE, NULL, 1, NULL);
@@ -117,7 +117,7 @@ void vTask2(void* pvParameters){
 
 /*RESPUESTAS
 1.2. 	El task1 se realiza sin problema.
-1.3. 	Al descomentar el task2 se crea la segunda task, 
+2.1. 	Al descomentar el task2 se crea la segunda task, 
 		en teoria se deberian prender y apagar el led verde, 
 		azul y rojo. Tras cargar el codigo observamos que el
 		LED azul se queda prendido.
@@ -148,4 +148,6 @@ void vTask2(void* pvParameters){
 		AZUL Y ROJO
 		Es decir, las 2 task se ejecutan secuancialmente.
 
+2.2.   Mismo orden que antes. Primero verde rojo y luego azul rojo.
+		Al invertir las prioridades denuevo, el orden se mantiene.
 */

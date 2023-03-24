@@ -1444,15 +1444,24 @@ Image component sizes
 
        250          0          0          0          0       1970   gpio.o
        612          0          0          0      10268       5495   heap_4.o
+<<<<<<< HEAD
         92          0          0          0          0       2411   list.o
        406         16          0          0          3       2595   main.o
+=======
+       150          0          0          0          0       2411   list.o
+       340         16          0          0          4       2698   main.o
+>>>>>>> lab_02_13
        632         12          0          4          5       3997   port.o
         36          8        236          0       1024        896   startup_stm32f10x_ld.o
        272          0          0          4          0       2855   system_stm32f10x.o
       2052          8          4          0        260      36320   tasks.o
 
     ----------------------------------------------------------------------
+<<<<<<< HEAD
       4400         44        272          8      11568      56539   Object Totals
+=======
+      6956         44        272          8      11568      78299   Object Totals
+>>>>>>> lab_02_13
          0          0         32          0          0          0   (incl. Generated)
         48          0          0          0          8          0   (incl. Padding)
 
@@ -1492,9 +1501,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
+<<<<<<< HEAD
       4524         60        272          8      11568      56747   Grand Totals
       4524         60        272          8      11568      56747   ELF Image Totals
       4524         60        272          8          0          0   ROM Totals
+=======
+      7116         60        272          8      11568      78503   Grand Totals
+      7116         60        272          8      11568      78503   ELF Image Totals
+      7116         60        272          8          0          0   ROM Totals
+>>>>>>> lab_02_13
 
 ==============================================================================
 
