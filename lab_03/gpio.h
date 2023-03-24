@@ -4,8 +4,8 @@
 #include <stdint.h>														
 #include <stdlib.h>
 
-#include "stm32f4xx.h"
-#include "stm32f4xx_hal_gpio.h"
+#include "stm32f10x.h"
+//#include "stm32f10xx_hal_gpio.h"
 
 #define RMIN 			configCPU_CLOCK_HZ/10				// Use timer value to set a min interval
 #define RMAX 			configCPU_CLOCK_HZ					// Use timer value to set a max interval
@@ -14,9 +14,9 @@
 
 
 // TODO: Change this registers to yours
-#define GREEN    	GPIO_ODR_OD5								// Initial number of waiting cycles
-#define RED      	GPIO_ODR_OD6								// Initial number of waiting cycles
-#define BLUE     	GPIO_ODR_OD7								// Initial number of waiting cycles
+#define GREEN    	GPIO_ODR_ODR1								// Initial number of waiting cycles GPIOB->ODR
+#define RED      	GPIO_ODR_ODR12								// Initial number of waiting cycles GPIOA->ODR
+#define BLUE     	GPIO_ODR_ODR13								// Initial number of waiting cycles GPIOC->ODR
 
 
 /*

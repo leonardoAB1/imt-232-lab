@@ -14,7 +14,7 @@
 /*
  * Define the Device Header File: 
  */
-#define CMSIS_device_header "stm32f4xx.h"
+#define CMSIS_device_header "stm32f10x.h"
 
 /* ARM.FreeRTOS::RTOS:Config:FreeRTOS:10.5.1 */
 #define RTE_RTOS_FreeRTOS_CONFIG        /* RTOS FreeRTOS Config for FreeRTOS API */
@@ -24,20 +24,6 @@
 #define RTE_RTOS_FreeRTOS_HEAP_4        /* RTOS FreeRTOS Heap 4 */
 /* ARM.FreeRTOS::RTOS:Timers:10.5.1 */
 #define RTE_RTOS_FreeRTOS_TIMERS        /* RTOS FreeRTOS Timers */
-/* Keil::Device:STM32Cube Framework:Classic:1.8.1 */
-#define RTE_DEVICE_FRAMEWORK_CLASSIC
-/* Keil::Device:STM32Cube HAL:Common:1.8.1 */
-#define RTE_DEVICE_HAL_COMMON
-/* Keil::Device:STM32Cube HAL:Cortex:1.8.1 */
-#define RTE_DEVICE_HAL_CORTEX
-/* Keil::Device:STM32Cube HAL:GPIO:1.8.1 */
-#define RTE_DEVICE_HAL_GPIO
-/* Keil::Device:STM32Cube HAL:PWR:1.8.1 */
-#define RTE_DEVICE_HAL_PWR
-/* Keil::Device:STM32Cube HAL:RCC:1.8.1 */
-#define RTE_DEVICE_HAL_RCC
-/* Keil::Device:Startup:2.6.3 */
-#define RTE_DEVICE_STARTUP_STM32F4XX    /* Device Startup for STM32F4 */
 
 
 #endif /* RTE_COMPONENTS_H */

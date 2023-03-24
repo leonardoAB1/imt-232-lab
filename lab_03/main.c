@@ -1,14 +1,14 @@
 #include "FreeRTOS.h"
 #include "task.h"
-// TODO: Include Semaphores Exercise 2
+#include "semphr.h"
 
 #include "gpio.h"
 
 // Simple random delay
-void vSimpleDelay(void);
+void vSimpleDelay(uint32_t  t);
 
 // TODO: Global Variables here
-
+SemaphoreHandle_t xMutex;
 
 // END TODO
 
@@ -23,12 +23,14 @@ int main(){
 
 	BaseType_t result = pdPASS;
 	
-	result = xTaskCreate(vTask1, "Task 1", configMINIMAL_STACK_SIZE, NULL, 1, NULL);
+	result = xTaskCreate(vTask1, "Task 1", configMINIMAL_STACK_SIZE, NULL, 2, NULL);
 	configASSERT(result == pdPASS)
 	
-	// result = xTaskCreate(vTask2, "Task 2", configMINIMAL_STACK_SIZE, NULL, 1, NULL);
+	result = xTaskCreate(vTask2, "Task 2", configMINIMAL_STACK_SIZE, NULL, 1, NULL);
 	configASSERT(result == pdPASS)
 	
+	xMutex = xSemaphoreCreateMutex();
+
 	vTaskStartScheduler();
 	
 	
@@ -38,11 +40,10 @@ int main(){
 
 
 
-void vSimpleDelay(void) {
-	uint32_t nCount = rand() % RDIV * RAMT  + RMIN;
-	for(uint32_t i=0; i < nCount; i++) {
-		__NOP();
-	}
+void vSimpleDelay(uint32_t  t)
+{
+	t*=10000; //Multiply by 10000 to get delay in ms
+	for (uint32_t i=0; i<t; i++) __NOP();
 }
 
 /*
@@ -61,27 +62,43 @@ void vSimpleDelay(void) {
 */
 void vTask1(void* pvParameters){
 
+		xSemaphoreTake(xMutex, portMAX_DELAY);
 		// Critical section starts from here!
-		GPIOA->ODR |= GREEN;
-		Access(RED);
-		vSimpleDelay();
-		Release(RED);
-		GPIOA->ODR &= ~GREEN;
+		Access(BLUE);
+		Access(RED); //set RED
+		vSimpleDelay(1000);
+		Release(RED); //borrar valor del registro
+		Release(BLUE);
 		// Critical section ends here!
-			
+		vSimpleDelay(1000);
+		xSemaphoreGive(xMutex);
 		vTaskDelete(NULL);
 }
 
 void vTask2(void* pvParameters){
 
+		xSemaphoreTake(xMutex, portMAX_DELAY);
 		// Critical section starts from here!
-		GPIOA->ODR |= BLUE;
+		Access(GREEN);
 		Access(RED);
-		vSimpleDelay();
+		vSimpleDelay(1000);
 		Release(RED);
-		GPIOA->ODR &= ~BLUE;
+		Release(GREEN);
 		// Critical section ends here!
-			
+		vSimpleDelay(1000);
+		xSemaphoreGive(xMutex);
 		vTaskDelete(NULL);
 }
 
+/*RESPUESTAS
+1.2. 	El task1 se realiza sin problema.
+2.1. 	Al descomentar el task2 se crea la segunda task, 
+		en teoria se deberian prender y apagar el led verde, 
+		azul y rojo. Tras cargar el codigo observamos que eso pasa.
+		Tras crear el semaforo se observa la siguiente secuencia:
+		VERDE Y ROJO
+		AZUL Y ROJO
+		Es decir, las 2 task se ejecutan secuancialmente.
+2.2.   Mismo orden que antes. Primero verde rojo y luego azul rojo.
+		Al invertir las prioridades denuevo, el orden se mantiene.
+*/
