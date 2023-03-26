@@ -87,7 +87,10 @@ void SquareTask(void *pvParameters)
 		
 		// Do something
 		y = y * y;
-
+		if (y>=10000)
+		{
+			vTaskDelete(NULL);
+		}
 		// Give
 		xQueueSendToBack(queue1, &y, portMAX_DELAY);
 
