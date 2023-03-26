@@ -10,6 +10,8 @@
 
 #include "main.h"
 
+TaskHandle_t squareTask;
+TaskHandle_t decrementTask;
 SemaphoreHandle_t xMutex; /*!< Semaphore used to protect access to shared resources. */
 QueueHandle_t queue1; /*!< Queue used for communication between tasks. */
 QueueHandle_t queue2; /*!< Queue used for communication between tasks. */
@@ -24,11 +26,14 @@ int main(){
     /* Initialize system resources */
     setup_RCC();
     setup_GPIO(); 
-
+	usart1_init();
+	usart1_sendStr("\n\rInicializando Sistema");
+	
     /* Initialize tasks and queues */
     initialize_tasks();
-
+    
     /* Start FreeRTOS scheduler */
+    usart1_sendStr("\n\rInicializando Cronograma");
     vTaskStartScheduler();
 
     /* Should never reach here */

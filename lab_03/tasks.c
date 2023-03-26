@@ -48,8 +48,8 @@ void initialize_tasks(void)
 
 	TaskInitParams_t const TaskInitParameters[] = {
 		// Pointer to the Task function, Task String Name, The task stack depth, Parameter Pointer, Task priority, Task Handle
-		{(TaskFunction_t)SquareTask, "SquareTask", TASK_SQUARE_STACK_DEPTH, &taskParams, TASK_SQUARE_PRIORITY, NULL},
-		{(TaskFunction_t)DecrementTask, "DecrementTask", TASK_DECREMENT_STACK_DEPTH, &taskParams, TASK_DECREMENT_PRIORITY, NULL}};
+		{(TaskFunction_t)SquareTask, "SquareTask", TASK_SQUARE_STACK_DEPTH, &taskParams, TASK_SQUARE_PRIORITY, squareTask},
+		{(TaskFunction_t)DecrementTask, "DecrementTask", TASK_DECREMENT_STACK_DEPTH, &taskParams, TASK_DECREMENT_PRIORITY, decrementTask}};
 
 	// Loop through the task table and create each task.
 	for (uint8_t TaskCount = 0;
@@ -79,23 +79,39 @@ void SquareTask(void *pvParameters)
 	TaskParams_t* params = (TaskParams_t*) pvParameters;
 	QueueHandle_t queue1 = params->queue1;
 	QueueHandle_t queue2 = params->queue2;
+	char str[30];
 	uint32_t y = 4;
+	usart1_sendStr("\n\rVariables de SquareTask Inicializadas");
+	sprintf(str,"\n\r%d", y);
+	usart1_sendStr(str);
 	while (1)
 	{	
-		// Take
-		xQueueReceive(queue2, &y, portMAX_DELAY);
-		
-		// Do something
-		y = y * y;
-		if (y>=10000)
-		{
-			vTaskDelete(NULL);
-		}
-		// Give
-		xQueueSendToBack(queue1, &y, portMAX_DELAY);
-
 		xSemaphoreTake(xMutex, portMAX_DELAY);
+		usart1_sendStr("\n\rCritical Section: RED-BLUE");
 		// Critical section starts from here!
+/*
+		// Take
+		if (xQueueReceive(queue2, &y, pdMS_TO_TICKS(1000))== pdPASS)
+		{
+			// Do something
+			sprintf(str,"\n\r%d", y);
+			usart1_sendStr(str);
+			y = y * y;
+
+			if (y>=10000)
+			{
+				vTaskDelete(NULL);
+			}
+		}
+		else
+		{
+            // Timeout occurred, handle the error
+            usart1_sendStr("\n\rTimeout ocurred");
+        }
+		
+		// Give
+		xQueueSendToBack(queue1, &y, 0);
+*/
 		Access(BLUE); // Set BLUE LED
 		Access(RED); // Set RED LED
 		delay_ms(1000); // Wait for 1 second
@@ -124,19 +140,33 @@ void DecrementTask(void *pvParameters)
 	QueueHandle_t queue1 = params->queue1;
 	QueueHandle_t queue2 = params->queue2;
 	uint32_t y = 0;
+	char str[30];
+	usart1_sendStr("\n\rVariables de DecrementTask Inicializadas");
+	sprintf(str,"\n\r%d", y);
+	usart1_sendStr(str);
 	while (1)
 	{
+		xSemaphoreTake(xMutex, portMAX_DELAY);
+		usart1_sendStr("\n\rCritical Section: RED-GREEN");
+		// Critical section starts from here!
+/*
 		// Take
-		xQueueReceive(queue1, &y, portMAX_DELAY);
-		
-		// Do something
-		y = y -1;
+		if (xQueueReceive(queue1, &y, pdMS_TO_TICKS(1000))==pdPASS)
+		{
+			// Do something
+			sprintf(str,"\n\r%d", y);
+			usart1_sendStr(str);
+			y = y -1;
+		}
+		else
+		{
+            // Timeout occurred, handle the error
+            usart1_sendStr("\n\rTimeout ocurred");
+        }
 
 		// Give
-		xQueueSendToBack(queue2, &y, portMAX_DELAY);
-
-		xSemaphoreTake(xMutex, portMAX_DELAY);
-		// Critical section starts from here!
+		xQueueSendToBack(queue2, &y, 0);
+*/
 		Access(GREEN);
 		Access(RED); // Set RED LED
 		delay_ms(1000); // Wait for 1 second

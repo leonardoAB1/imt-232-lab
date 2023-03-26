@@ -16,6 +16,7 @@
 #include "semphr.h"
 #include "queue.h"
 #include "delay.h"
+#include "usart.h"
 
 // Define the stack depth and priority for the SquareTask
 #define TASK_SQUARE_STACK_DEPTH configMINIMAL_STACK_SIZE
@@ -26,6 +27,8 @@
 #define TASK_DECREMENT_PRIORITY 1
 
 // Declare global variables
+extern TaskHandle_t squareTask;
+extern TaskHandle_t decrementTask;
 extern SemaphoreHandle_t xMutex;
 extern QueueHandle_t queue1;
 extern QueueHandle_t queue2;

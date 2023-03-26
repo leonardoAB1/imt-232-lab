@@ -12,6 +12,7 @@
 #define __MAIN_H
 
 #include "tasks.h"
+#include "usart.h"
 
 #endif /* _MAIN_H_ */
 

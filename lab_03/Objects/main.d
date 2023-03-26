@@ -20,4 +20,4 @@
   C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\list.h \
   C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\semphr.h \
   C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\queue.h \
-  delay.h
+  delay.h usart.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h
