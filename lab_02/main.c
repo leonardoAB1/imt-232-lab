@@ -117,10 +117,6 @@ void vTask2(void* pvParameters){
 
 /*RESPUESTAS
 1.2. 	El task1 se realiza sin problema.
-2.1. 	Al descomentar el task2 se crea la segunda task, 
-		en teoria se deberian prender y apagar el led verde, 
-		azul y rojo. Tras cargar el codigo observamos que el
-		LED azul se queda prendido.
 1.4. 	MUTEX: CHECK
 		Se desarrolla la task2 y a continuación la task1. Por tanto, 
 		da la impresion de que esto impone mutex(mutual exclusion).
@@ -147,7 +143,10 @@ void vTask2(void* pvParameters){
 		VERDE Y ROJO
 		AZUL Y ROJO
 		Es decir, las 2 task se ejecutan secuancialmente.
-
+2.1. 	Al descomentar el task2 se crea la segunda task, 
+		en teoria se deberian prender y apagar el led verde, 
+		azul y rojo. Tras cargar el codigo observamos que el
+		LED azul se queda prendido.
 2.2.   Mismo orden que antes. Primero verde rojo y luego azul rojo.
 		Al invertir las prioridades denuevo, el orden se mantiene.
 */

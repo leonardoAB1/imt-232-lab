@@ -1,8 +1,6 @@
 
 #include "gpio.h"					// Lab specific defines/declarations
 
-#include <stdint.h>				// Standard Integer - data type definitions
-
 /*
 *	@Brief Embedded Systems II (ES II) Lab 2
 * 

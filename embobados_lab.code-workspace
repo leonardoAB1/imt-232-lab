@@ -12,7 +12,8 @@
 			"main.h": "c",
 			"stm32f10x.h": "c",
 			"stdio.h": "c",
-			"freertos.h": "c"
+			"freertos.h": "c",
+			"delay.h": "c"
 		}
 	}
 }
