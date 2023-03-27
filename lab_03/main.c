@@ -26,11 +26,11 @@ int main(){
     /* Initialize system resources */
     setup_RCC();
     setup_GPIO(); 
-	usart1_init();
-	usart1_sendStr("\n\rInicializando Sistema");
-	
+
     /* Initialize tasks and queues */
     initialize_tasks();
+	usart1_init();
+	usart1_sendStr("\n\rSistema Inicializado");
     
     /* Start FreeRTOS scheduler */
     usart1_sendStr("\n\rInicializando Cronograma");

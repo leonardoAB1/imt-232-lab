@@ -86,10 +86,6 @@ void SquareTask(void *pvParameters)
 	usart1_sendStr(str);
 	while (1)
 	{	
-		xSemaphoreTake(xMutex, portMAX_DELAY);
-		usart1_sendStr("\n\rCritical Section: RED-BLUE");
-		// Critical section starts from here!
-/*
 		// Take
 		if (xQueueReceive(queue2, &y, pdMS_TO_TICKS(1000))== pdPASS)
 		{
@@ -111,16 +107,19 @@ void SquareTask(void *pvParameters)
 		
 		// Give
 		xQueueSendToBack(queue1, &y, 0);
-*/
+		/*
+		xSemaphoreTake(xMutex, portMAX_DELAY);
+		usart1_sendStr("\n\rCritical Section: RED-BLUE");
+		// Critical section starts from here!
 		Access(BLUE); // Set BLUE LED
 		Access(RED); // Set RED LED
 		delay_ms(1000); // Wait for 1 second
 		Release(RED); // Clear the value of RED LED
 		Release(BLUE); // Clear the value of BLUE LED
-
 		// Critical section ends here!
 		delay_ms(1000);
 		xSemaphoreGive(xMutex);
+		*/
 	}
 }
 /**
@@ -146,10 +145,6 @@ void DecrementTask(void *pvParameters)
 	usart1_sendStr(str);
 	while (1)
 	{
-		xSemaphoreTake(xMutex, portMAX_DELAY);
-		usart1_sendStr("\n\rCritical Section: RED-GREEN");
-		// Critical section starts from here!
-/*
 		// Take
 		if (xQueueReceive(queue1, &y, pdMS_TO_TICKS(1000))==pdPASS)
 		{
@@ -166,7 +161,10 @@ void DecrementTask(void *pvParameters)
 
 		// Give
 		xQueueSendToBack(queue2, &y, 0);
-*/
+		/*
+		xSemaphoreTake(xMutex, portMAX_DELAY);
+		usart1_sendStr("\n\rCritical Section: RED-GREEN");
+		// Critical section starts from here!
 		Access(GREEN);
 		Access(RED); // Set RED LED
 		delay_ms(1000); // Wait for 1 second
@@ -175,6 +173,7 @@ void DecrementTask(void *pvParameters)
 		// Critical section ends here!
 		delay_ms(1000); // Wait for 1 second
 		xSemaphoreGive(xMutex);
+		*/
 	}
 }
 

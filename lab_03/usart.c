@@ -21,8 +21,10 @@ void usart1_init()
 
 void usart1_sendByte(unsigned char c)
 {
+	xSemaphoreTake(xMutex, portMAX_DELAY);
 	while((USART1->SR&(1<<6)) == 0);	//wait until the TC flag is set
 	USART1->DR=c;
+	xSemaphoreGive(xMutex);
 }
 
 /*the function sends a zero-ending string through USART1*/

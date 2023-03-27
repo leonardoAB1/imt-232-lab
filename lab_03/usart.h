@@ -12,6 +12,11 @@
 
 #include "stm32f10x.h"
 #include "stdio.h"
+#include "FreeRTOS.h"
+#include "semphr.h"
+
+//Declare global variables
+extern SemaphoreHandle_t xMutex;
 
 void usart1_init(void);
 void usart1_sendByte(unsigned char c);

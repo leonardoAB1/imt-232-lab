@@ -1,6 +1,6 @@
 Dependencies for Project 'nucleo_blink', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 6190000::V6.19::ARMCLANG
-F (.\main.c)(0x6420B5CC)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/STM32F103C6-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/portable/GCC/ARM_CM3-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_LD -D_RTE_-o ./objects/main.o -MD)
+F (.\main.c)(0x6421B91B)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/STM32F103C6-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/portable/GCC/ARM_CM3-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_LD -D_RTE_-o ./objects/main.o -MD)
 I (main.h)(0x6420A018)
 I (tasks.h)(0x6420BCBD)
 I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\FreeRTOS.h)(0x63875CE0)
@@ -26,7 +26,7 @@ I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\in
 I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\semphr.h)(0x63875CE0)
 I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\queue.h)(0x63875CE0)
 I (delay.h)(0x642042FE)
-I (usart.h)(0x64209F67)
+I (usart.h)(0x6421B82F)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x6388F1C8)
 F (.\delay.h)(0x642042FE)()
 F (.\delay.c)(0x6420431F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/STM32F103C6-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/portable/GCC/ARM_CM3-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_LD -D_RTE_-o ./objects/delay.o -MD)
@@ -52,8 +52,8 @@ I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\
 I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x626FF39E)
 I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AE221E)
 F (.\gpio.h)(0x64203BC1)()
-F (.\usart.c)(0x64209F64)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/STM32F103C6-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/portable/GCC/ARM_CM3-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_LD -D_RTE_-o ./objects/usart.o -MD)
-I (usart.h)(0x64209F67)
+F (.\usart.c)(0x6421B836)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/STM32F103C6-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/portable/GCC/ARM_CM3-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_LD -D_RTE_-o ./objects/usart.o -MD)
+I (usart.h)(0x6421B82F)
 I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\stm32f10x.h)(0x61AE221E)
 I (RTE\_Target_1\RTE_Components.h)(0x641DD25F)
 I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm3.h)(0x626FF39E)
@@ -63,8 +63,20 @@ I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\
 I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x626FF39E)
 I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include\system_stm32f10x.h)(0x61AE221E)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x6388F1C8)
-F (.\usart.h)(0x64209F67)()
-F (.\tasks.c)(0x6420BCE9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/STM32F103C6-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/portable/GCC/ARM_CM3-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_LD -D_RTE_-o ./objects/tasks.o -MD)
+I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\FreeRTOS.h)(0x63875CE0)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x6388F1C8)
+I (RTE\RTOS\FreeRTOSConfig.h)(0x641DD25F)
+I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\projdefs.h)(0x63875CE0)
+I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\portable.h)(0x63875CE0)
+I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\deprecated_definitions.h)(0x63875CE0)
+I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\portable\GCC\ARM_CM3\portmacro.h)(0x63875CE0)
+I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\mpu_wrappers.h)(0x63875CE0)
+I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\semphr.h)(0x63875CE0)
+I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\queue.h)(0x63875CE0)
+I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\task.h)(0x63875CE0)
+I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\list.h)(0x63875CE0)
+F (.\usart.h)(0x6421B82F)()
+F (.\tasks.c)(0x6421B844)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/STM32F103C6-I./RTE/RTOS-I./RTE/_Target_1-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/CMSIS/RTOS2/FreeRTOS/Include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/portable/GCC/ARM_CM3-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include-D__UVISION_VERSION="538" -D_RTE_ -DSTM32F10X_LD -D_RTE_-o ./objects/tasks.o -MD)
 I (tasks.h)(0x6420BCBD)
 I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\FreeRTOS.h)(0x63875CE0)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x6388F1C8)
@@ -89,7 +101,7 @@ I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\in
 I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\semphr.h)(0x63875CE0)
 I (C:\Users\ZEPHYRUS\AppData\Local\Arm\Packs\ARM\CMSIS-FreeRTOS\10.5.1\Source\include\queue.h)(0x63875CE0)
 I (delay.h)(0x642042FE)
-I (usart.h)(0x64209F67)
+I (usart.h)(0x6421B82F)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x6388F1C8)
 F (.\tasks.h)(0x6420BCBD)()
 F (RTE/Device/STM32F103C6/RTE_Device.h)(0x641DD25F)()
