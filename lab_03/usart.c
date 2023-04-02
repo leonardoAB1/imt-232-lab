@@ -14,7 +14,7 @@ void usart1_init()
     RCC->APB2ENR |= (1<<14);					//enable USART1 clock
 	RCC->APB1ENR |= (1<<0);						//enable TIM2 clock
 	GPIOA	->	ODR |=(1<<10); 					// pull-up PA10
-	GPIOA	->	CRH = 0x444448B4; 			    // (PA10)RX1=input with pull-up, (PA9)TX1=alt. func output
+	GPIOA	->	CRH |= 0x000008B0; 			    // (PA10)RX1=input with pull-up, (PA9)TX1=alt. func output
 	USART1	->	CR1 = 0x200C;					// Configure Control Register Value for 1 stop, 8 data, no parity and  enable transmitter and receiver
 	USART1	->	BRR = 7500;						// 72MHz/9600bps=7500=clock divisor
 }
