@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../ref"
+		},
+		{
+			"path": "../../../../../../Desktop/lab3_FreeRTOS_v2"
 		}
 	],
 	"settings": {

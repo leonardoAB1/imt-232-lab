@@ -35,6 +35,7 @@ void initialize_tasks(void)
 	// Handle creation
 	xMutex = xSemaphoreCreateMutex();
 	usartMutex = xSemaphoreCreateMutex();
+	mathMutex = xSemaphoreCreateMutex();
 	// xQueueCreate(items in queue,  item's size in bytes)
 	queue1 = xQueueCreate(QUEUE_ITEM_NUMBER, sizeof(uint32_t));
 	queue2 = xQueueCreate(QUEUE_ITEM_NUMBER, sizeof(uint32_t));
@@ -82,35 +83,29 @@ void SquareTask(void *pvParameters)
 	char str[30];
 
 	//variables a enviar
-	uint32_t y=4;
+	uint32_t y = 4;
 
 	usart1_sendStr("\n\rVariables de SquareTask Inicializadas");
 	sprintf(str,"\n\ry=%d", y);
-	//usart1_sendStr(str);
+	usart1_sendStr(str);
 	while (1)
 	{		
-		// Take
-		//xQueueReceive(queue2, (void *)&y, portMAX_DELAY);
-		// Do something
 		sprintf(str,"\n\ry=%d", y);
 		usart1_sendStr(str);
-		
-		y = y * y;
-
+		// Take
+		if (xQueuePeek(queue2, &y, 0) == pdTRUE) 
+		{
+			xQueueReceive(queue2, &y, portMAX_DELAY);
+		}
+		// Do something
+		y = y * y; //Square value
 		if (y>=10000)
 		{
-			uint32_t y=4;
+			y=4;
 		}
-	
-		// Timeout occurred, handle the error
-		//usart1_sendStr("\n\rTimeout ocurred");
-        
-		
 		// Give
-		//xQueueSendToBack(queue1, (void *)&y, portMAX_DELAY);
+		xQueueSendToBack(queue1, &y, portMAX_DELAY);
 		
-		
-		usart1_sendStr("\n\rCritical Section: RED-BLUE");
 		xSemaphoreTake(xMutex, portMAX_DELAY);
 		// Critical section starts from here!
 		Access(BLUE); // Set BLUE LED
@@ -121,8 +116,6 @@ void SquareTask(void *pvParameters)
 		// Critical section ends here!
 		// vTaskDelay(pdMS_TO_TICKS(1000));
 		xSemaphoreGive(xMutex);
-		
-		
 	}
 }
 /**
@@ -141,39 +134,43 @@ void DecrementTask(void *pvParameters)
 	TaskParams_t* params = (TaskParams_t*) pvParameters;
 	QueueHandle_t queue1 = params->queue1;
 	QueueHandle_t queue2 = params->queue2;
-	uint32_t y = 0;
+	//String to print values by usart
 	char str[30];
+
+	//variable to send
+	uint32_t y=0;
+
 	usart1_sendStr("\n\rVariables de DecrementTask Inicializadas");
 	sprintf(str,"\n\ry=%d", y);
-	//usart1_sendStr(str);
+	usart1_sendStr(str);
 	while (1)
 	{	
-		// Take
-		//xQueueReceive(queue1, (void *)&y, portMAX_DELAY);
-		// Do something
 		sprintf(str,"\n\ry=%d", y);
 		usart1_sendStr(str);
 		
+		// Take
+		if (xQueuePeek(queue1, &y, 0) == pdTRUE) 
+		{
+			xQueueReceive(queue1, &y, portMAX_DELAY);
+		}
+		// Do something
 		y = y - 1;
 		// Timeout occurred, handle the error
 		//usart1_sendStr("\n\rTimeout ocurred");
-        
 		// Give
-		//xQueueSendToBack(queue2, (void *)&y, portMAX_DELAY);
+		xQueueSendToBack(queue2, &y, portMAX_DELAY);
 		
-		
-		usart1_sendStr("\n\rCritical Section: RED-GREEN");
 		xSemaphoreTake(xMutex, portMAX_DELAY);
 		// Critical section starts from here!
 		Access(GREEN);
 		Access(RED); // Set RED LED
+
 		delay_ms(1000); // Wait for 1 second
 		Release(RED); // Clear the value of RED LED
 		Release(GREEN); // Clear the value of GREEN LED
 		// vTaskDelay(pdMS_TO_TICKS(1000));
 		// Critical section ends here!
 		xSemaphoreGive(xMutex);
-		
 	}
 }
 

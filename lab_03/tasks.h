@@ -20,7 +20,7 @@
 
 // Define the stack depth and priority for the SquareTask
 #define TASK_SQUARE_STACK_DEPTH configMINIMAL_STACK_SIZE
-#define TASK_SQUARE_PRIORITY 1
+#define TASK_SQUARE_PRIORITY 2
 
 // Define the stack depth and priority for the DecrementTask
 #define TASK_DECREMENT_STACK_DEPTH configMINIMAL_STACK_SIZE
@@ -40,6 +40,7 @@ extern TaskHandle_t squareTask;
 extern TaskHandle_t decrementTask;
 extern SemaphoreHandle_t xMutex;
 extern SemaphoreHandle_t usartMutex;
+extern SemaphoreHandle_t mathMutex;
 extern QueueHandle_t queue1;
 extern QueueHandle_t queue2;
 extern BaseType_t result;
