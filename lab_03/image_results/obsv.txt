@@ -1,0 +1,3 @@
+Se destaca la necesidad de chequear el estado inicial de la queue en caso de configurar la espera portMAX_DELAY para eviar que el programa se quede bloqueado. 
+La funcion subrayada en la figura # 'xQueuePeek' permite revizar que la misma no se encuentre vacia, 
+evitando que el programa se quede esperando por los datos de la queue indefinidamente.
