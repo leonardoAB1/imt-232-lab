@@ -97,6 +97,7 @@ void SquareTask(void *pvParameters)
 		delay_ms(1000); // Wait for 1 second
 		Release(RED); // Clear the value of RED LED
 		Release(BLUE); // Clear the value of BLUE LED
+		delay_ms(1000); // Wait for 1 second
 		// Critical section ends here!
 		// vTaskDelay(pdMS_TO_TICKS(1000));
 		xSemaphoreGive(xMutex);
@@ -152,6 +153,7 @@ void DecrementTask(void *pvParameters)
 		delay_ms(1000); // Wait for 1 second
 		Release(RED); // Clear the value of RED LED
 		Release(GREEN); // Clear the value of GREEN LED
+		delay_ms(1000); // Wait for 1 second
 		// vTaskDelay(pdMS_TO_TICKS(1000));
 		// Critical section ends here!
 		xSemaphoreGive(xMutex);
