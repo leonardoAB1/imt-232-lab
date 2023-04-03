@@ -10,21 +10,6 @@
 
 #include "tasks.h"
 
-/*
- * Task configuration structure used to create a task configuration table.
- * Note: this is for dynamic memory allocation. We create all the tasks up front
- * dynamically and then never allocate memory again after initialization.
- */
-typedef struct
-{
-	TaskFunction_t const TaskCodePtr;		 /*< Pointer to the task function */
-	const char *const TaskName;				 /*< String task name             */
-	const configSTACK_DEPTH_TYPE StackDepth; /*< Stack depth                  */
-	const void *ParametersPtr;				 /*< Parameter Pointer            */
-	UBaseType_t TaskPriority;				 /*< Task Priority                */
-	TaskHandle_t *const TaskHandle;			 /*< Pointer to task handle       */
-} TaskInitParams_t;
-
 /**
  * @brief Initializes the tasks and creates the task table.
  * 
@@ -39,8 +24,8 @@ void initialize_tasks(void)
 	queue1 = xQueueCreate(QUEUE_ITEM_NUMBER, sizeof(uint32_t));
 	queue2 = xQueueCreate(QUEUE_ITEM_NUMBER, sizeof(uint32_t));
 
-	taskParams.queue1 = queue1;
-	taskParams.queue2 = queue2;
+	taskParams.param1 = queue1;
+	taskParams.param2 = queue2;
 
 	TaskInitParams_t const TaskInitParameters[] = {
 		// Pointer to the Task function, Task String Name, The task stack depth, Parameter Pointer, Task priority, Task Handle
@@ -75,8 +60,8 @@ void SquareTask(void *pvParameters)
 {
 	//Handles
 	TaskParams_t* params = (TaskParams_t*) pvParameters;
-	QueueHandle_t queue1 = params->queue1;
-	QueueHandle_t queue2 = params->queue2;
+	QueueHandle_t queue1 = params->param1;
+	QueueHandle_t queue2 = params->param2;
 
 	//String to print values by usart
 	char str[30];
@@ -131,8 +116,8 @@ void SquareTask(void *pvParameters)
 void DecrementTask(void *pvParameters)
 {
 	TaskParams_t* params = (TaskParams_t*) pvParameters;
-	QueueHandle_t queue1 = params->queue1;
-	QueueHandle_t queue2 = params->queue2;
+	QueueHandle_t queue1 = params->param1;
+	QueueHandle_t queue2 = params->param2;
 	//String to print values by usart
 	char str[30];
 

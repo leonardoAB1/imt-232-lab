@@ -30,10 +30,25 @@
 //Declare task params structure
 typedef struct
 {
-	QueueHandle_t queue1;
-	QueueHandle_t queue2;
+	QueueHandle_t param1;
+	QueueHandle_t param2;
 
 } TaskParams_t;
+
+/*
+ * Task configuration structure used to create a task configuration table.
+ * Note: this is for dynamic memory allocation. We create all the tasks up front
+ * dynamically and then never allocate memory again after initialization.
+ */
+typedef struct
+{
+	TaskFunction_t const TaskCodePtr;		 /*< Pointer to the task function */
+	const char *const TaskName;				 /*< String task name             */
+	const configSTACK_DEPTH_TYPE StackDepth; /*< Stack depth                  */
+	const void *ParametersPtr;				 /*< Parameter Pointer            */
+	UBaseType_t TaskPriority;				 /*< Task Priority                */
+	TaskHandle_t *const TaskHandle;			 /*< Pointer to task handle       */
+} TaskInitParams_t;
 
 // Declare global variables
 extern TaskHandle_t squareTask;
