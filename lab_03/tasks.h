@@ -40,7 +40,6 @@ extern TaskHandle_t squareTask;
 extern TaskHandle_t decrementTask;
 extern SemaphoreHandle_t xMutex;
 extern SemaphoreHandle_t usartMutex;
-extern SemaphoreHandle_t mathMutex;
 extern QueueHandle_t queue1;
 extern QueueHandle_t queue2;
 extern BaseType_t result;

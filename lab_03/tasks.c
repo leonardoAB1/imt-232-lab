@@ -35,7 +35,6 @@ void initialize_tasks(void)
 	// Handle creation
 	xMutex = xSemaphoreCreateMutex();
 	usartMutex = xSemaphoreCreateMutex();
-	mathMutex = xSemaphoreCreateMutex();
 	// xQueueCreate(items in queue,  item's size in bytes)
 	queue1 = xQueueCreate(QUEUE_ITEM_NUMBER, sizeof(uint32_t));
 	queue2 = xQueueCreate(QUEUE_ITEM_NUMBER, sizeof(uint32_t));

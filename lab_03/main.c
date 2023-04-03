@@ -14,7 +14,6 @@ TaskHandle_t squareTask;
 TaskHandle_t decrementTask;
 TaskParams_t taskParams;
 SemaphoreHandle_t xMutex; /*!< Semaphore used to protect access to shared resources. */
-SemaphoreHandle_t mathMutex;  /*!< Semaphore used perform math operations by order. */
 SemaphoreHandle_t usartMutex; /*!< Semaphore used to protect access to usart. */
 QueueHandle_t queue1; /*!< Queue used for communication between tasks. */
 QueueHandle_t queue2; /*!< Queue used for communication between tasks. */
