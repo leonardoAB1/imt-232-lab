@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\nucleo_blink.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\nucleo_blink.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Mon Apr  3 11:25:42 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Mon Apr  3 12:27:42 2023
 <BR><P>
 <H3>Maximum Stack Usage =        220 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -558,7 +558,7 @@ Global Symbols
 <LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SquareTask
 </UL>
 
-<P><STRONG><a name="[35]"></a>DecrementTask</STRONG> (Thumb, 180 bytes, Stack size 40 bytes, tasks.o(.text.DecrementTask))
+<P><STRONG><a name="[35]"></a>DecrementTask</STRONG> (Thumb, 188 bytes, Stack size 40 bytes, tasks.o(.text.DecrementTask))
 <BR><BR>[Stack]<UL><LI>Max Depth = 204 + Unknown Stack Size
 <LI>Call Chain = DecrementTask &rArr; usart1_sendStr &rArr; xQueueSemaphoreTake &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
@@ -587,7 +587,7 @@ Global Symbols
 <P><STRONG><a name="[6]"></a>SVC_Handler</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, port.o(.text.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_ld.o(RESET)
 </UL>
-<P><STRONG><a name="[34]"></a>SquareTask</STRONG> (Thumb, 192 bytes, Stack size 40 bytes, tasks.o(.text.SquareTask))
+<P><STRONG><a name="[34]"></a>SquareTask</STRONG> (Thumb, 200 bytes, Stack size 40 bytes, tasks.o(.text.SquareTask))
 <BR><BR>[Stack]<UL><LI>Max Depth = 204 + Unknown Stack Size
 <LI>Call Chain = SquareTask &rArr; usart1_sendStr &rArr; xQueueSemaphoreTake &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
@@ -620,7 +620,7 @@ Global Symbols
 <LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SquareTask
 </UL>
 
-<P><STRONG><a name="[60]"></a>initialize_tasks</STRONG> (Thumb, 260 bytes, Stack size 80 bytes, tasks.o(.text.initialize_tasks))
+<P><STRONG><a name="[60]"></a>initialize_tasks</STRONG> (Thumb, 244 bytes, Stack size 80 bytes, tasks.o(.text.initialize_tasks))
 <BR><BR>[Stack]<UL><LI>Max Depth = 220 + Unknown Stack Size
 <LI>Call Chain = initialize_tasks &rArr; xQueueCreateMutex &rArr; xQueueGenericSend &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
