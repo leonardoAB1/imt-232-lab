@@ -28,6 +28,37 @@ Project File Date:  03/26/2023
 *** Using Compiler 'V6.19', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
 Note: source file 'C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/tasks.c' - object file renamed from '.\Objects\tasks.o' to '.\Objects\tasks_1.o'.
+main.c(11): warning: In file included from...
+./main.h(14): warning: In file included from...
+./tasks.h(14): warning: In file included from...
+./gpio.h(7): warning: In file included from...
+C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(18): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  *              - To use or not the peripheral<92>s drivers in application code(i.e. 
+                                               ^
+C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(19): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  *                code will be based on direct access to peripheral<92>s registers 
+                                                                    ^
+C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.0/Device/Include\stm32f10x.h(26): warning: invalid UTF-8 in comment [-Winvalid-utf8]
+  *           - Macros to access peripheral<92>s registers hardware
+                                           ^
+main.c(11): warning: In file included from...
+./main.h(14): warning: In file included from...
+./tasks.h(18): warning: In file included from...
+./delay.h(23): warning: no newline at end of file [-Wnewline-eof]
+/******************************************************************************/
+                                                                                ^
+main.c(11): warning: In file included from...
+./main.h(14): warning: In file included from...
+./tasks.h(19): warning: In file included from...
+./usart.h(29): warning: no newline at end of file [-Wnewline-eof]
+/******************************************************************************/
+                                                                                ^
+main.c(27): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+int main(){
+        ^
+         void
+6 warnings generated.
+compiling main.c...
 tasks.c(11): warning: In file included from...
 ./tasks.h(14): warning: In file included from...
 ./gpio.h(7): warning: In file included from...
@@ -50,61 +81,76 @@ tasks.c(11): warning: In file included from...
 ./usart.h(29): warning: no newline at end of file [-Wnewline-eof]
 /******************************************************************************/
                                                                                 ^
-tasks.c(51): warning: incompatible pointer types initializing 'TaskHandle_t *const' (aka 'struct tskTaskControlBlock **const') with an expression of type 'TaskHandle_t' (aka 'struct tskTaskControlBlock *'); take the address with & [-Wincompatible-pointer-types]
+tasks.c(47): warning: incompatible pointer types initializing 'TaskHandle_t *const' (aka 'struct tskTaskControlBlock **const') with an expression of type 'TaskHandle_t' (aka 'struct tskTaskControlBlock *'); take the address with & [-Wincompatible-pointer-types]
                 {(TaskFunction_t)SquareTask, "SquareTask", TASK_SQUARE_STACK_DEPTH, &taskParams, TASK_SQUARE_PRIORITY, squareTask},
                                                                                                                        ^~~~~~~~~~
                                                                                                                        &
-tasks.c(52): warning: incompatible pointer types initializing 'TaskHandle_t *const' (aka 'struct tskTaskControlBlock **const') with an expression of type 'TaskHandle_t' (aka 'struct tskTaskControlBlock *'); take the address with & [-Wincompatible-pointer-types]
+tasks.c(48): warning: incompatible pointer types initializing 'TaskHandle_t *const' (aka 'struct tskTaskControlBlock **const') with an expression of type 'TaskHandle_t' (aka 'struct tskTaskControlBlock *'); take the address with & [-Wincompatible-pointer-types]
                 {(TaskFunction_t)DecrementTask, "DecrementTask", TASK_DECREMENT_STACK_DEPTH, &taskParams, TASK_DECREMENT_PRIORITY, decrementTask}};
                                                                                                                                    ^~~~~~~~~~~~~
                                                                                                                                    &
 tasks.c(23): warning: padding struct 'TaskInitParams_t' with 2 bytes to align 'ParametersPtr' [-Wpadded]
         const void *ParametersPtr;                               /*< Parameter Pointer            */
                     ^
-tasks.c(62): warning: passing 'const void *const' to parameter of type 'void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+tasks.c(58): warning: passing 'const void *const' to parameter of type 'void *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
                                                          TaskInitParameters[TaskCount].ParametersPtr,
                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 C:/Users/ZEPHYRUS/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/include/task.h(358): note: passing argument to parameter 'pvParameters' here
                             void * const pvParameters,
                                          ^
-tasks.c(47): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
-        TaskParams_t taskParams = {queue1, queue2};
-                     ^
-tasks.c(80): warning: declaration shadows a variable in the global scope [-Wshadow]
+tasks.c(45): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+        TaskInitParams_t const TaskInitParameters[] = {
+                               ^
+tasks.c(78): warning: declaration shadows a variable in the global scope [-Wshadow]
         QueueHandle_t queue1 = params->queue1;
                       ^
-./tasks.h(33): note: previous declaration is here
+./tasks.h(43): note: previous declaration is here
 extern QueueHandle_t queue1;
                      ^
-tasks.c(81): warning: declaration shadows a variable in the global scope [-Wshadow]
+tasks.c(79): warning: declaration shadows a variable in the global scope [-Wshadow]
         QueueHandle_t queue2 = params->queue2;
                       ^
-./tasks.h(34): note: previous declaration is here
+./tasks.h(44): note: previous declaration is here
 extern QueueHandle_t queue2;
                      ^
-tasks.c(82): warning: unused variable 'str' [-Wunused-variable]
-        char str[30];
-             ^
-tasks.c(144): warning: declaration shadows a variable in the global scope [-Wshadow]
+tasks.c(102): warning: declaration shadows a local variable [-Wshadow]
+                        uint32_t y=4;
+                                 ^
+tasks.c(85): note: previous declaration is here
+        uint32_t y=4;
+                 ^
+tasks.c(102): warning: unused variable 'y' [-Wunused-variable]
+                        uint32_t y=4;
+                                 ^
+tasks.c(79): warning: unused variable 'queue2' [-Wunused-variable]
+        QueueHandle_t queue2 = params->queue2;
+                      ^
+tasks.c(78): warning: unused variable 'queue1' [-Wunused-variable]
         QueueHandle_t queue1 = params->queue1;
                       ^
-./tasks.h(33): note: previous declaration is here
+tasks.c(142): warning: declaration shadows a variable in the global scope [-Wshadow]
+        QueueHandle_t queue1 = params->queue1;
+                      ^
+./tasks.h(43): note: previous declaration is here
 extern QueueHandle_t queue1;
                      ^
-tasks.c(145): warning: declaration shadows a variable in the global scope [-Wshadow]
+tasks.c(143): warning: declaration shadows a variable in the global scope [-Wshadow]
         QueueHandle_t queue2 = params->queue2;
                       ^
-./tasks.h(34): note: previous declaration is here
+./tasks.h(44): note: previous declaration is here
 extern QueueHandle_t queue2;
                      ^
-tasks.c(147): warning: unused variable 'str' [-Wunused-variable]
-        char str[30];
-             ^
-16 warnings generated.
+tasks.c(142): warning: unused variable 'queue1' [-Wunused-variable]
+        QueueHandle_t queue1 = params->queue1;
+                      ^
+tasks.c(143): warning: unused variable 'queue2' [-Wunused-variable]
+        QueueHandle_t queue2 = params->queue2;
+                      ^
+20 warnings generated.
 compiling tasks.c...
 linking...
-Program Size: Code=8848 RO-data=272 RW-data=8 ZI-data=12192  
-".\Objects\nucleo_blink.axf" - 0 Error(s), 16 Warning(s).
+Program Size: Code=8448 RO-data=280 RW-data=8 ZI-data=12208  
+".\Objects\nucleo_blink.axf" - 0 Error(s), 26 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -146,13 +192,13 @@ Package Vendor: Keil
 
    * Component: ARM.FreeRTOS::RTOS:Core:Cortex-M:10.5.1
       Source file:   Source/tasks.c
-      Include file:  Source/include/queue.h
-      Source file:   Source/list.c
-      Include file:  Source/include/FreeRTOS.h
-      Source file:   Source/portable/GCC/ARM_CM3/port.c
-      Include file:  Source/include/semphr.h
       Source file:   Source/queue.c
+      Include file:  Source/include/queue.h
+      Include file:  Source/include/semphr.h
       Include file:  Source/include/task.h
+      Include file:  Source/include/FreeRTOS.h
+      Source file:   Source/list.c
+      Source file:   Source/portable/GCC/ARM_CM3/port.c
       Source file:   CMSIS/RTOS2/FreeRTOS/Source/freertos_evr.c
 
    * Component: ARM.FreeRTOS::RTOS:Heap:Heap_4:10.5.1
@@ -165,10 +211,10 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
       Include file:  RTE_Driver/Config/RTE_Device.h
       Source file:   Device/Source/ARM/startup_stm32f10x_ld.s
       Source file:   Device/Source/system_stm32f10x.c
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
 Build Time Elapsed:  00:00:01
 </pre>
 </body>

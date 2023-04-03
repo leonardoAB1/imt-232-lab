@@ -16,7 +16,7 @@
 #include "semphr.h"
 
 //Declare global variables
-extern SemaphoreHandle_t xMutex;
+extern SemaphoreHandle_t usartMutex;
 
 void usart1_init(void);
 void usart1_sendByte(unsigned char c);

@@ -25,12 +25,6 @@ typedef struct
 	TaskHandle_t *const TaskHandle;			 /*< Pointer to task handle       */
 } TaskInitParams_t;
 
-typedef struct
-{
-	QueueHandle_t queue1;
-	QueueHandle_t queue2;
-} TaskParams_t;
-
 /**
  * @brief Initializes the tasks and creates the task table.
  * 
@@ -40,11 +34,13 @@ void initialize_tasks(void)
 
 	// Handle creation
 	xMutex = xSemaphoreCreateMutex();
+	usartMutex = xSemaphoreCreateMutex();
 	// xQueueCreate(items in queue,  item's size in bytes)
-	queue1 = xQueueCreate(5, sizeof(uint32_t));
-	queue2 = xQueueCreate(5, sizeof(uint32_t));
+	queue1 = xQueueCreate(QUEUE_ITEM_NUMBER, sizeof(uint32_t));
+	queue2 = xQueueCreate(QUEUE_ITEM_NUMBER, sizeof(uint32_t));
 
-	TaskParams_t taskParams = {queue1, queue2};
+	taskParams.queue1 = queue1;
+	taskParams.queue2 = queue2;
 
 	TaskInitParams_t const TaskInitParameters[] = {
 		// Pointer to the Task function, Task String Name, The task stack depth, Parameter Pointer, Task priority, Task Handle
@@ -64,6 +60,7 @@ void initialize_tasks(void)
 							 TaskInitParameters[TaskCount].TaskHandle);
 		configASSERT(result == pdPASS) // Make sure the task was created successfully
 	}
+	
 }
 
 /**
@@ -76,42 +73,43 @@ void initialize_tasks(void)
  */
 void SquareTask(void *pvParameters)
 {
+	//Handles
 	TaskParams_t* params = (TaskParams_t*) pvParameters;
 	QueueHandle_t queue1 = params->queue1;
 	QueueHandle_t queue2 = params->queue2;
+
+	//String to print values by usart
 	char str[30];
-	uint32_t y = 4;
+
+	//variables a enviar
+	uint32_t y=4;
+
 	usart1_sendStr("\n\rVariables de SquareTask Inicializadas");
-	//sprintf(str,"\n\r%d", y);
+	sprintf(str,"\n\ry=%d", y);
 	//usart1_sendStr(str);
 	while (1)
-	{	
-		usart1_sendStr("\n\rAhhh");
-		delay_ms(1000); // Wait for 1 second
-		
+	{		
 		// Take
-		xQueueReceive(queue2, (void *)&y, portMAX_DELAY);
+		//xQueueReceive(queue2, (void *)&y, portMAX_DELAY);
 		// Do something
-		sprintf(str,"\n\r%d", y);
+		sprintf(str,"\n\ry=%d", y);
 		usart1_sendStr(str);
-		Access(RED);
+		
 		y = y * y;
 
 		if (y>=10000)
 		{
-			Release(RED);
-			vTaskDelete(NULL);
+			uint32_t y=4;
 		}
 	
 		// Timeout occurred, handle the error
-		Release(RED);
 		//usart1_sendStr("\n\rTimeout ocurred");
         
 		
 		// Give
-		xQueueSendToBack(queue1, (void *)&y, portMAX_DELAY);
+		//xQueueSendToBack(queue1, (void *)&y, portMAX_DELAY);
 		
-		/*
+		
 		usart1_sendStr("\n\rCritical Section: RED-BLUE");
 		xSemaphoreTake(xMutex, portMAX_DELAY);
 		// Critical section starts from here!
@@ -121,9 +119,9 @@ void SquareTask(void *pvParameters)
 		Release(RED); // Clear the value of RED LED
 		Release(BLUE); // Clear the value of BLUE LED
 		// Critical section ends here!
-		delay_ms(1000);
+		// vTaskDelay(pdMS_TO_TICKS(1000));
 		xSemaphoreGive(xMutex);
-		*/
+		
 		
 	}
 }
@@ -146,29 +144,24 @@ void DecrementTask(void *pvParameters)
 	uint32_t y = 0;
 	char str[30];
 	usart1_sendStr("\n\rVariables de DecrementTask Inicializadas");
-	//sprintf(str,"\n\r%d", y);
+	sprintf(str,"\n\ry=%d", y);
 	//usart1_sendStr(str);
 	while (1)
 	{	
-		usart1_sendStr("\n\rQue bendicion");
-		delay_ms(1000); // Wait for 1 second
-		
 		// Take
-		xQueueReceive(queue1, (void *)&y, portMAX_DELAY);
+		//xQueueReceive(queue1, (void *)&y, portMAX_DELAY);
 		// Do something
-		sprintf(str,"\n\r%d", y);
+		sprintf(str,"\n\ry=%d", y);
 		usart1_sendStr(str);
-		Access(BLUE);
+		
 		y = y - 1;
-	
 		// Timeout occurred, handle the error
-		Release(BLUE);
 		//usart1_sendStr("\n\rTimeout ocurred");
         
 		// Give
-		xQueueSendToBack(queue2, (void *)&y, portMAX_DELAY);
+		//xQueueSendToBack(queue2, (void *)&y, portMAX_DELAY);
 		
-		/*
+		
 		usart1_sendStr("\n\rCritical Section: RED-GREEN");
 		xSemaphoreTake(xMutex, portMAX_DELAY);
 		// Critical section starts from here!
@@ -177,10 +170,10 @@ void DecrementTask(void *pvParameters)
 		delay_ms(1000); // Wait for 1 second
 		Release(RED); // Clear the value of RED LED
 		Release(GREEN); // Clear the value of GREEN LED
+		// vTaskDelay(pdMS_TO_TICKS(1000));
 		// Critical section ends here!
-		delay_ms(1000); // Wait for 1 second
 		xSemaphoreGive(xMutex);
-		*/
+		
 	}
 }
 

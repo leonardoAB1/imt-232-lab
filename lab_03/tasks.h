@@ -25,14 +25,25 @@
 // Define the stack depth and priority for the DecrementTask
 #define TASK_DECREMENT_STACK_DEPTH configMINIMAL_STACK_SIZE
 #define TASK_DECREMENT_PRIORITY 1
+#define QUEUE_ITEM_NUMBER 5
+
+//Declare task params structure
+typedef struct
+{
+	QueueHandle_t queue1;
+	QueueHandle_t queue2;
+
+} TaskParams_t;
 
 // Declare global variables
 extern TaskHandle_t squareTask;
 extern TaskHandle_t decrementTask;
 extern SemaphoreHandle_t xMutex;
+extern SemaphoreHandle_t usartMutex;
 extern QueueHandle_t queue1;
 extern QueueHandle_t queue2;
 extern BaseType_t result;
+extern TaskParams_t taskParams;
 
 // Declare function prototypes
 void initialize_tasks(void);
